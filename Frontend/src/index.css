@@ -1,0 +1,11 @@
+/* body{
+  height: 100%;
+  width: 100%;
+  background-color: #0078a5 ;
+} */
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}

@@ -1,0 +1,29 @@
+.cat_main_div{
+    /* border: 1px solid black; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 90%;
+    /* gap: 20px; */
+}
+.cat_sub_div{
+    padding: 70px;
+    margin-top: 10% !important;
+    margin: auto;
+    color: white;
+    width: 300px;
+    background-color: #3c8dbc;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 35px;
+    cursor: pointer;
+}
+.cat_sub_div:hover{
+    background-color: #296c93;
+}
+
+@media screen and (max-width: 767px) {
+    aside{
+        display: block !important;
+    }
+  }

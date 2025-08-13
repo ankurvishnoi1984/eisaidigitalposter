@@ -1,0 +1,79 @@
+.HeadingC {
+  color: #fff;
+}
+.logoMainU {
+  width: 65%;
+  background-color: #fff;
+  border-radius: 0.4em;
+}
+.theadc {
+  background-color: #0078a5;
+  color: #fff;
+}
+.act button {
+  width: 20%;
+  float: right;
+  margin: 5px;
+}
+/* .content-wrapper {
+  background-color: #f013ff1f !important;
+} */
+.icon-container {
+  width: 30px;
+  height: 30px;
+  background-color: #94dbf5;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-container i {
+  color: #0078a5;
+}
+
+#upload-input {
+  position: absolute;
+  /* top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; */
+  opacity: 0;
+  cursor: pointer;
+}
+.AddDocMain {
+  background-color: #fff;
+  color: #0078a5;
+  width: 80%;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.navbar-dnone{
+  display: none;
+}
+
+.sidebar-open .main-sidebar {
+  transform: translateX(0);
+}
+
+.sidebar-collapse .main-sidebar {
+  transform: translateX(-250px); /* Adjust according to your sidebar width */
+}
+
+.cpointer{
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-dnone{
+    display: block;
+  }
+  .main-sidebar{
+    width: 150px;
+  }
+}

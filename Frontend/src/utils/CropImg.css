@@ -1,0 +1,33 @@
+.crop_popup{
+    position: absolute;
+    top: 12%;
+    left: 19%;
+    padding: 20px;
+    z-index: 3;    
+    background-color: white;      
+    box-shadow:   rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;    
+}
+
+.cropper_box{
+    height:400px;
+    width: 500px;
+}
+
+@media (max-width: 990px) {
+    .cropper_box{
+        height:400px;
+        width: 300px;
+    }
+}
+@media (max-width: 420px) {
+    .cropper_box{
+        height:400px;
+        width: 300px;
+    }
+    .crop_popup{
+       
+        top: 12%;
+        left: 2%;
+        
+    }
+}

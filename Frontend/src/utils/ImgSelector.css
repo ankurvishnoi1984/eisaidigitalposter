@@ -1,0 +1,22 @@
+.image-list {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+  
+  .image-item {
+    border: 2px solid #ccc;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .image-item.selected {
+    border-color: blue;
+  }
+  
+  /* img {
+    max-width: 100px;
+    max-height: 100px;
+  } */
+  

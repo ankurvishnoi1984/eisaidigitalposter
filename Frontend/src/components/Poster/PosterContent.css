@@ -1,0 +1,1207 @@
+ /* Poster 1 styling */
+.text-center {
+    position: relative;
+  }
+
+ 
+  
+  
+  .poster-image1 {
+    width: 250px; 
+    height: 350px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image1 {
+    position: absolute;
+    margin-top: 87px;
+    margin-left: -6px;
+   }
+   .profile-poster1{
+     vertical-align: middle;
+     width: 95px;
+     height: 95px;
+     border-radius: 50%;
+    
+     
+   }
+   .namediv1{
+    position: absolute;
+    margin-top: 108px;
+    margin-left: 105px;
+    font-size: 10px;
+    width: 117px;
+    text-align: center;
+    color: #fff;
+    font-weight: 800 !important;
+    word-break: break-word;
+    /* border: 1px solid blue; */
+   }
+   .namediv1.long-text {
+  
+    margin-top: 106px;
+  }
+   .therapydiv1{
+    position: absolute;
+    margin-top: 135px;
+    margin-left: 105px;
+    font-size: 9px;
+    width: 117px;
+    font-weight: 800 !important;
+    text-align: center;
+    color: #fff;
+    /* border: 1px solid blue; */
+   }
+
+   .hospitaldiv1{
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 105px;
+    font-size: 9px;
+    width: 117px;
+    font-weight: 800 !important;
+    text-align: center;
+    color: #fff;
+    /* border: 1px solid blue; */
+   }
+  
+  
+
+   /* .drodownselectdiv{
+    display: inline-block;
+   } */
+   .select-container {
+    display: flex;
+    align-items: flex-start; /* Adjust alignment as needed */
+    gap: 20px; /* Adds spacing between the two divs */
+    width: 100%; /* Optionally, set a width for the container */
+    padding: 10px;
+  }
+  
+
+
+  
+
+
+   .poster-image2 {
+    width: 275px; 
+    height: 366px; 
+    position: relative;
+    z-index: 10;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image2 {
+    position: absolute;
+    margin-top: 140px;
+    margin-left: 0px;
+}
+   .profile-poster2{
+     vertical-align: middle;
+     width: 87px;
+     height: 87px;
+     border-radius:50%;
+    
+     
+   }
+   .namediv2{
+    position: absolute;
+    margin-top: 85px;
+    margin-left: 9px;
+    font-size: 11px;
+    width: 130px;
+    text-align: center;
+    color: #6e191c;
+    font-style: italic;
+    line-height: 1.2;
+    /* font-weight: 500; */
+    font-family: "Caprasimo", serif;
+
+    
+    /* border: 1px solid blue; */
+   }
+   .therapydiv2{
+    position: absolute;
+    margin-top: 105px;
+    margin-left: 7px;
+    font-size: 8px;
+    width: 130px;
+    text-align: center;
+    color: #6e191c;
+    /* font-style: italic; */
+    font-weight: 100;
+    font-family: "Caprasimo", serif;
+   }
+
+   .hospitaldiv2{
+    position: absolute;
+    margin-top: 120px;
+    margin-left: 7px;
+    font-size: 8px;
+    width: 125px;
+    text-align: center;
+    color: #6e191c;
+    
+    /* font-style: italic; */
+    font-weight: 100;
+    font-family: "Caprasimo", serif;
+   }
+
+   .therapydiv21{
+    margin-top: 112px;
+   }
+
+   .hospitaldiv21{
+    margin-top: 123px;
+   }
+
+
+   .poster-image6 {
+    width: 250px; 
+    height: 350px; 
+    position: relative;
+    z-index: 1;
+   
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image6 {
+    position: absolute;
+    margin-top: 85px;
+    margin-left: -12px;
+   }
+   .profile-poster6{
+     vertical-align: middle;
+     width: 94px;
+     height: 94px;
+     border-radius: 50%;
+    
+     
+   }
+   .namediv6{
+    position: absolute;
+    margin-top: 108px;
+    margin-left: 105px;
+    font-size: 9px;
+    width: 112px;
+    text-align: center;
+    color: #032160;
+    font-weight: 900 !important;
+    word-break: break-word;
+    /* border: 1px solid blue; */
+   }
+   .namediv6.long-text {
+  
+    margin-top: 95px;
+  }
+   .therapydiv6{
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 96px;
+    font-size: 8px;
+    width: 120px;
+    font-weight: 900 !important;
+    text-align: center;
+    color: #ED1C24;
+    /* border: 1px solid blue; */
+   }
+
+   .hospitaldiv6{
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 95px;
+    font-size: 8px;
+    width: 120px;
+    font-weight: 900 !important;
+    text-align: center;
+    color: #ED1C24;
+    /* border: 1px solid blue; */
+   }
+   
+
+   /* for poster 7*/
+   .poster-image7 {
+    width: 250px; 
+    height: 350px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image7 {
+    position: absolute;
+    margin-top: 244px;
+    margin-left: 20px;
+   }
+   .profile-poster7{
+     vertical-align: middle;
+     width: 65px;
+     height: 65px;
+     /* border-radius: 50%; */
+    
+     
+   }
+   .namediv7{
+    position: absolute;
+    margin-top: 242px;
+    margin-left: 113px;
+    font-size: 10px;
+    width: 110px;
+    text-align: center;
+    color: #e0e2e3;
+    font-weight: 800 !important;
+    word-break: break-word;
+    /* border: 1px solid blue; */
+   }
+   .namediv7.long-text {
+  
+    margin-top: 233px;
+    line-height: 1.2;
+  }
+   .therapydiv7{
+    position: absolute;
+    margin-top: 263px;
+    margin-left: 113px;
+    font-size: 9px;
+    width: 110px;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #e0e2e3;
+    /* border: 1px solid blue; */
+   }
+
+   .hospitaldiv7{
+    position: absolute;
+    margin-top: 283px;
+    margin-left: 113px;
+    font-size: 9px;
+    width: 110px;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #e0e2e3;
+    /* border: 1px solid blue; */
+   }
+  
+  
+  
+
+   /* for poster category 18*/
+   
+   .poster-image18 {
+    width: 250px; 
+    height: 350px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image18 {
+    position: absolute;
+    margin-top: 293px;
+    margin-left: -8px;
+   }
+   .profile-poster18{
+     vertical-align: middle;
+     width: 45px;
+     height: 45px;
+     border-radius: 50%;
+    
+     
+   }
+   .namediv18{
+    position: absolute;
+    margin-top: 298px;
+    margin-left: 43px;
+    font-size: 8px;
+    width: 150px;
+    text-align: left;
+    color: #032160;
+    font-weight: 900 !important;
+    /* word-break: break-word; */
+    /* border: 1px solid blue; */
+   }
+   /* .namediv1.long-text {
+  
+    margin-top: 138px;
+  } */
+   .therapydiv18{
+    position: absolute;
+    margin-top: 309px;
+    margin-left: 43px;
+    font-size: 7px;
+    width: 150px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+
+    
+   }
+
+   .hospitaldiv18{
+    position: absolute;
+    margin-top: 317px;
+    margin-left: 43px;
+    font-size: 7px;
+    width: 150px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+    
+   }
+   
+  .poster-image182 {
+    width: 250px; 
+    height: 350px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image182 {
+    position: absolute;
+    margin-top: 292px;
+    margin-left: 25px;
+   }
+   .profile-poster182{
+     vertical-align: middle;
+     width: 30px;
+     height: 35px;
+     /* border-radius: 50%; */
+    
+     
+   }
+   .namediv182{
+    position: absolute;
+    margin-top: 296px;
+    margin-left: 60px;
+    font-size: 8px;
+    width: 200px;
+    text-align: left;
+    color: #032160;
+    font-weight: 900 !important;
+    /* word-break: break-word; */
+    /* border: 1px solid blue; */
+   }
+   /* .namediv1.long-text {
+  
+    margin-top: 138px;
+  } */
+   .therapydiv182{
+    position: absolute;
+    margin-top: 308px;
+    margin-left: 60px;
+    font-size: 7px;
+    width: 120px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+
+    
+   }
+
+   .hospitaldiv182{
+    position: absolute;
+    margin-top: 316px;
+    margin-left: 60px;
+    font-size: 7px;
+    width: 120px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+    
+   }
+
+
+   .poster-image183 {
+    width: 250px; 
+    height: 350px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image183 {
+    position: absolute;
+    margin-top: 294px;
+    margin-left: -5px;
+   }
+   .profile-poster183{
+     vertical-align: middle;
+     width: 30px;
+     height: 35px;
+     /* border-radius: 50%; */
+    
+     
+   }
+   .namediv183{
+    position: absolute;
+    margin-top: 296px;
+    margin-left: 29px;
+    font-size: 8px;
+    width: 180px;
+    text-align: left;
+    color: #032160;
+    font-weight: 900 !important;
+    /* word-break: break-word; */
+    /* border: 1px solid blue; */
+   }
+   /* .namediv1.long-text {
+  
+    margin-top: 138px;
+  } */
+   .therapydiv183{
+    position: absolute;
+    margin-top: 308px;
+    margin-left: 29px;
+    font-size: 7px;
+    width: 150px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+
+    
+   }
+
+   .hospitaldiv183{
+    position: absolute;
+    margin-top: 316px;
+    margin-left: 29px;
+    font-size: 7px;
+    width: 180px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+    
+   }
+
+   
+
+   .poster-image184 {
+    width: 250px; 
+    height: 350px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image184 {
+    position: absolute;
+    margin-top: 292px;
+    margin-left: 35px;
+   }
+   .profile-poster184{
+     vertical-align: middle;
+     width: 35px;
+     height: 35px;
+     border-radius: 50%;
+    
+     
+   }
+   .namediv184{
+    position: absolute;
+    margin-top: 296px;
+    margin-left: 73px;
+    font-size: 8px;
+    width: 150px;
+    text-align: left;
+    color: #032160;
+    font-weight: 900 !important;
+    word-break: break-word;
+    /* border: 1px solid blue; */
+   }
+   
+   .therapydiv184{
+    position: absolute;
+    margin-top: 306px;
+    margin-left: 74px;
+    font-size: 7px;
+    width: 120px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+
+    
+   }
+
+   .hospitaldiv184{
+    position: absolute;
+    margin-top: 315px;
+    margin-left: 74px;
+    font-size: 7px;
+    width: 120px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+    
+   }
+
+   .poster-image185 {
+    width: 250px; 
+    height: 350px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image185 {
+    position: absolute;
+    margin-top: 278px;
+    margin-left: 25px;
+   }
+   .profile-poster185{
+     vertical-align: middle;
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+    
+     
+   }
+   .namediv185{
+    position: absolute;
+    margin-top: 282px;
+    margin-left: 69px;
+    font-size: 8px;
+    width: 150px;
+    text-align: left;
+    color: #032160;
+    font-weight: 900 !important;
+    word-break: break-word;
+    /* border: 1px solid blue; */
+   }
+   /* .namediv1.long-text {
+  
+    margin-top: 138px;
+  } */
+   .therapydiv185{
+    position: absolute;
+    margin-top: 294px;
+    margin-left: 69px;
+    font-size: 7px;
+    width: 120px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+
+    
+   }
+
+   .hospitaldiv185{
+    position: absolute;
+    margin-top: 304px;
+    margin-left: 69px;
+    font-size: 7px;
+    width: 120px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #9c9696;
+    /* border: 1px solid blue; */
+    
+   }
+
+
+   /* for poster 3*/
+   .poster-image3 {
+    width: 250px; 
+    height: 355px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image3 {
+    position: absolute;
+    margin-top: 141.3px;
+    margin-left: 3.5px;
+   }
+   .profile-poster3{
+     vertical-align: middle;
+     width: 89px;
+     height: 90px;
+     border-radius: 5%;
+    
+     
+   }
+   .namediv3{
+    position: absolute;
+    margin-top: 158px;
+    margin-left: 110px;
+    font-size: 10px;
+    width: 110px;
+    text-align: center;
+    color: #032160;
+    font-weight: 800 !important;
+    word-break: break-word;
+    /* border: 1px solid blue; */
+   }
+   .namediv3.long-text {
+  
+    margin-top: 150px;
+    line-height: 1.2;
+  }
+   .therapydiv3{
+    position: absolute;
+    margin-top: 183px;
+    margin-left: 110px;
+    font-size: 9px;
+    width: 110px;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #032160;
+    /* border: 1px solid blue; */
+   }
+
+   .hospitaldiv3{
+    position: absolute;
+    margin-top: 202px;
+    margin-left: 110px;
+    font-size: 9px;
+    width: 110px;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #032160;
+    /* border: 1px solid blue; */
+   }
+
+
+   /* for poster 5 */
+  
+   /* for poster category 18*/
+   
+   .poster-image5 {
+    width: 230px; 
+    height: 390px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image5 {
+    position: absolute;
+    margin-top: 294px;
+    margin-left: -8px;
+   }
+   .profile-poster5{
+     vertical-align: middle;
+     width: 52px;
+     height: 52px;
+     border-radius: 50%;
+    
+     
+   }
+   .namediv5{
+    position: absolute;
+    margin-top: 303px;
+    margin-left: 48px;
+    font-size: 8px;
+    width: 150px;
+    text-align: left;
+    color: #032160;
+    font-weight: 900 !important;
+    /* word-break: break-word; */
+    /* border: 1px solid blue; */
+   }
+   
+   .therapydiv5{
+    position: absolute;
+    margin-top: 317px;
+    margin-left: 48px;
+    font-size: 7px;
+    width: 150px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #6c6767;
+    /* border: 1px solid blue; */
+
+    
+   }
+
+   .hospitaldiv5{
+    position: absolute;
+    margin-top: 327px;
+    margin-left: 48px;
+    font-size: 7px;
+    width: 150px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #6c6767;
+    /* border: 1px solid blue; */
+    
+   }
+   
+
+   .poster-image52 {
+    width: 230px; 
+    height: 390px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image52 {
+    position: absolute;
+    margin-top: 305px;
+    margin-left: -10px;
+   }
+   .profile-poster52{
+     vertical-align: middle;
+     width: 51px;
+     height: 51px;
+     border-radius: 50%;
+    
+     
+   }
+   .namediv52{
+    position: absolute;
+    margin-top: 315px;
+    margin-left: 48px;
+    font-size: 8px;
+    width: 150px;
+    text-align: left;
+    color: #032160;
+    font-weight: 900 !important;
+    /* word-break: break-word; */
+    /* border: 1px solid blue; */
+   }
+   
+   .therapydiv52{
+    position: absolute;
+    margin-top: 328px;
+    margin-left: 48px;
+    font-size: 7px;
+    width: 150px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #6c6767;
+    /* border: 1px solid blue; */
+
+    
+   }
+
+   .hospitaldiv52{
+    position: absolute;
+    margin-top: 338px;
+    margin-left: 48px;
+    font-size: 7px;
+    width: 150px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #6c6767;
+    /* border: 1px solid blue; */
+    
+   }
+   
+
+   .poster-image53 {
+    width: 230px; 
+    height: 390px; 
+    position: relative;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+  .profile-image53 {
+    position: absolute;
+    margin-top: 294px;
+    margin-left: -8px;
+   }
+   .profile-poster53{
+     vertical-align: middle;
+     width: 52px;
+     height: 52px;
+     border-radius: 50%;
+    
+     
+   }
+   .namediv53{
+    position: absolute;
+    margin-top: 303px;
+    margin-left: 48px;
+    font-size: 8px;
+    width: 150px;
+    text-align: left;
+    color: #032160;
+    font-weight: 900 !important;
+    /* word-break: break-word; */
+    /* border: 1px solid blue; */
+   }
+   
+   .therapydiv53{
+    position: absolute;
+    margin-top: 317px;
+    margin-left: 48px;
+    font-size: 7px;
+    width: 150px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #6c6767;
+    /* border: 1px solid blue; */
+
+    
+   }
+
+   .hospitaldiv53{
+    position: absolute;
+    margin-top: 327px;
+    margin-left: 48px;
+    font-size: 7px;
+    width: 150px;
+    font-weight: 500 !important;
+    text-align: left;
+    color: #6c6767;
+    /* border: 1px solid blue; */
+    
+   }
+
+
+
+    /* for poster category 18*/
+   
+    .poster-image4 {
+      width: 275px; 
+      height: 390px; 
+      position: relative;
+      z-index: 1;
+      background-size: contain;
+      background-repeat: no-repeat;
+      
+    }
+    .profile-image4 {
+      position: absolute;
+      margin-top: 306px;
+      margin-left: 15px;
+     }
+     .profile-poster4{
+       vertical-align: middle;
+       width: 52px;
+       height: 52px;
+       border-radius: 50%;
+      
+       
+     }
+     .namediv4{
+      position: absolute;
+      margin-top: 316px;
+      margin-left: 72px;
+      font-size: 8px;
+      width: 150px;
+      text-align: left;
+      color: #fff;
+      font-weight: 900 !important;
+      /* word-break: break-word; */
+      /* border: 1px solid blue; */
+     }
+     
+     .therapydiv4{
+      position: absolute;
+      margin-top: 335px;
+      margin-left: 72px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #fff;
+      /* border: 1px solid blue; */
+  
+      
+     }
+  
+     .hospitaldiv4{
+      position: absolute;
+      margin-top: 345px;
+      margin-left: 72px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #fff;
+      /* border: 1px solid blue; */
+      
+     }
+     
+  
+     .poster-image42 {
+      width: 275px; 
+      height: 390px; 
+      position: relative;
+      z-index: 1;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .profile-image42 {
+      position: absolute;
+      margin-top: 306px;
+      margin-left: 14px;
+     }
+     .profile-poster42{
+       vertical-align: middle;
+       width: 51px;
+       height: 51px;
+       border-radius: 50%;
+      
+       
+     }
+     .namediv42{
+      position: absolute;
+      margin-top: 316px;
+      margin-left: 72px;
+      font-size: 8px;
+      width: 150px;
+      text-align: left;
+      color: #fff;
+      font-weight: 900 !important;
+      /* word-break: break-word; */
+      /* border: 1px solid blue; */
+     }
+     
+     .therapydiv42{
+      position: absolute;
+      margin-top: 335px;
+      margin-left: 72px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #fff;
+      /* border: 1px solid blue; */
+  
+      
+     }
+  
+     .hospitaldiv42{
+      position: absolute;
+      margin-top: 345px;
+      margin-left: 72px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #fff;
+      /* border: 1px solid blue; */
+      
+     }
+
+
+     /* purple poster*/
+
+     
+     .poster-image441 {
+      width: 275px; 
+      height: 390px; 
+      position: relative;
+      z-index: 1;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .profile-image441 {
+      position: absolute;
+      margin-top: 321px;
+      margin-left: 10px;
+     }
+     .profile-poster441{
+       vertical-align: middle;
+       width: 51px;
+       height: 51px;
+       border-radius: 50%;
+      
+       
+     }
+     .namediv441{
+      position: absolute;
+      margin-top: 330px;
+      margin-left: 72px;
+      font-size: 8px;
+      width: 150px;
+      text-align: left;
+      color: #6b4a7c;
+      font-weight: 900 !important;
+      /* word-break: break-word; */
+      /* border: 1px solid blue; */
+     }
+     
+     .therapydiv441{
+      position: absolute;
+      margin-top: 344px;
+      margin-left: 72px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #6b4a7c;
+      /* border: 1px solid blue; */
+  
+      
+     }
+  
+     .hospitaldiv441{
+      position: absolute;
+      margin-top: 354px;
+      margin-left: 72px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #6b4a7c;
+      /* border: 1px solid blue; */
+      
+     }
+  
+
+
+     .poster-image442 {
+      width: 275px; 
+      height: 390px; 
+      position: relative;
+      z-index: 1;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .profile-image442 {
+      position: absolute;
+      margin-top: 329px;
+      margin-left: -6px;
+     }
+     .profile-poster442{
+       vertical-align: middle;
+       width: 51px;
+       height: 51px;
+       border-radius: 50%;
+      
+       
+     }
+     .namediv442{
+      position: absolute;
+      margin-top: 332px;
+      margin-left: 65px;
+      font-size: 8px;
+      width: 150px;
+      text-align: left;
+      color: #6b4a7c;
+      font-weight: 900 !important;
+      /* word-break: break-word; */
+      /* border: 1px solid blue; */
+     }
+     
+     .therapydiv442{
+      position: absolute;
+      margin-top: 346px;
+      margin-left: 65px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #6b4a7c;
+      /* border: 1px solid blue; */
+  
+      
+     }
+  
+     .hospitaldiv442{
+      position: absolute;
+      margin-top: 356px;
+      margin-left: 65px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #6b4a7c;
+      /* border: 1px solid blue; */
+      
+     }
+
+
+
+
+     .poster-image443 {
+      width: 275px; 
+      height: 390px; 
+      position: relative;
+      z-index: 1;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .profile-image443 {
+      position: absolute;
+      margin-top: 322px;
+      margin-left: -7px;
+     }
+     .profile-poster443{
+       vertical-align: middle;
+       width: 51px;
+       height: 51px;
+       border-radius: 50%;
+      
+       
+     }
+     .namediv443{
+      position: absolute;
+      margin-top: 330px;
+      margin-left: 65px;
+      font-size: 8px;
+      width: 150px;
+      text-align: left;
+      color: #6b4a7c;
+      font-weight: 900 !important;
+      /* word-break: break-word; */
+      /* border: 1px solid blue; */
+     }
+     
+     .therapydiv443{
+      position: absolute;
+      margin-top: 344px;
+      margin-left: 65px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #6b4a7c;
+      /* border: 1px solid blue; */
+  
+      
+     }
+  
+     .hospitaldiv443{
+      position: absolute;
+      margin-top: 354px;
+      margin-left: 65px;
+      font-size: 7px;
+      width: 150px;
+      font-weight: 500 !important;
+      text-align: left;
+      color: #6b4a7c;
+      /* border: 1px solid blue; */
+      
+     }
+  
+
+   .montserrat-fnt {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+  }
+
+
