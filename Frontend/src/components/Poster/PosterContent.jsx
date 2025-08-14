@@ -178,54 +178,89 @@ const PosterContent = () => {
     const profilenameClone = posterClone.querySelector(".namediv2");
     const profileTherapyClone = posterClone.querySelector(".therapydiv2");
     const profileHospitalClone = posterClone.querySelector(".hospitaldiv2");
+    // console.log(profileTherapyClone.innerHTML)
   
     // Modify the clone
-    profileImageClone.style.width = "585px"; 
-    profileImageClone.style.height = "585px"; 
+    profileImageClone.style.width = "1015px"; 
+    profileImageClone.style.height = "1015px"; 
     profileImageClone.style.position = "absolute";
-    profileImageClone.style.top = "28.6%";
-    profileImageClone.style.left = "5.5%";
+    profileImageClone.style.top = "39.55%";
+    profileImageClone.style.left = "8%";
     profileImageClone.style.borderRadius = "50%";
   
-    const maxLength = 16;
-    const nameText = profilenameClone.textContent;
-    if (nameText.length > maxLength) {
-      profilenameClone.style.top = "35%";
-      profilenameClone.style.lineHeight  = "1.3";
-    } else {
-      profilenameClone.style.top = "35%";
-    }
+    // const maxLength = 16;
+    // const nameText = profilenameClone.textContent;
+    // if (nameText.length > maxLength) {
+    //   profilenameClone.style.top = "35%";
+    //   profilenameClone.style.lineHeight  = "1.3";
+    // } else {
+    //   profilenameClone.style.top = "35%";
+    // }
   
     profilenameClone.style.position = "absolute";
-    profilenameClone.style.left = "51%";
-    profilenameClone.style.fontSize = "55px";
-    profilenameClone.style.fontFamily = "Montserrat, sans-serif";
-    profilenameClone.style.textAlign = 'center';
-    profilenameClone.style.width = "700px";
-    profilenameClone.style.color = '#fff';
-    profilenameClone.style.fontWeight = "700";
+    profilenameClone.style.top = "38%";
+    profilenameClone.style.left = "48%";
+    profilenameClone.style.fontSize = "120px";
+    profilenameClone.style.fontFamily = "Archivo Black, sans-serif";
+    profilenameClone.style.textAlign = 'start';
+    // profilenameClone.style.width = "1200px";
+    profilenameClone.style.color = '#1900BB';
+    profilenameClone.style.fontWeight = "900";
+    profilenameClone.style.textShadow = `
+  2px 0 #1900BB,
+  -2px 0 #1900BB,
+  0 2px #1900BB,
+  0 -2px #1900BB,
+  1.5px 1.5px #1900BB,
+  -1.5px 1.5px #1900BB,
+  1.5px -1.5px #1900BB,
+  -1.5px -1.5px #1900BB
+`;
+
     profilenameClone.style.wordBreak = "break-word";
     // profilenameClone.style.border = '1px solid blue'
   
     profileTherapyClone.style.position = "absolute";
-    profileTherapyClone.style.top = "44%";
-    profileTherapyClone.style.left = "50%";
-    profileTherapyClone.style.fontSize = "45px";
-    profileTherapyClone.style.fontFamily = "Montserrat, sans-serif";
-    profileTherapyClone.style.textAlign = 'center';
-    profileTherapyClone.style.width = "700px";
-    profileTherapyClone.style.color = '#fff';
-    profileTherapyClone.style.fontWeight = "700";
+    profileTherapyClone.style.top = "48.5%";
+    profileTherapyClone.style.left = "48%";
+    profileTherapyClone.style.fontSize = "120px";
+    profileTherapyClone.style.fontFamily = "Balthazar, serif";
+    profileTherapyClone.style.textAlign = 'start';
+    // profileTherapyClone.style.width = "700px";
+    profileTherapyClone.style.color = '#1900BB';
+    profileTherapyClone.style.fontWeight = "500";
+    profileTherapyClone.style.textShadow = `
+  2px 0 #1900BB,
+  -2px 0 #1900BB,
+  0 2px #1900BB,
+  0 -2px #1900BB,
+  1.5px 1.5px #1900BB,
+  -1.5px 1.5px #1900BB,
+  1.5px -1.5px #1900BB,
+  -1.5px -1.5px #1900BB
+`;
+
+
   
     profileHospitalClone.style.position = "absolute";
-    profileHospitalClone.style.top = "48%";
-    profileHospitalClone.style.left = "50%";
-    profileHospitalClone.style.fontSize = "45px";
-    profileHospitalClone.style.fontFamily = "Montserrat, sans-serif";
-    profileHospitalClone.style.textAlign = "center";
-    profileHospitalClone.style.width = "700px";
-    profileHospitalClone.style.color = '#fff';
-    profileHospitalClone.style.fontWeight = "700";
+    profileHospitalClone.style.top = "57%";
+    profileHospitalClone.style.left = "48%";
+    profileHospitalClone.style.fontSize = "120px";
+    profileHospitalClone.style.fontFamily = "Balthazar, serif";
+    profileHospitalClone.style.textAlign = "start";
+    profileHospitalClone.style.width = "1200px";
+    profileHospitalClone.style.color = '#1900BB';
+    profileHospitalClone.style.fontWeight = "500";
+    profileHospitalClone.style.textShadow = `
+  2px 0 #1900BB,
+  -2px 0 #1900BB,
+  0 2px #1900BB,
+  0 -2px #1900BB,
+  1.5px 1.5px #1900BB,
+  -1.5px 1.5px #1900BB,
+  1.5px -1.5px #1900BB,
+  -1.5px -1.5px #1900BB
+`;
   
     // Load the profile image
     const profileImageSrc = profileImageClone.src;
@@ -251,8 +286,8 @@ const PosterContent = () => {
   
         // Draw the profile image onto the canvas
        // ctx.drawImage(profileImage, parseFloat(profileImageClone.style.left), parseFloat(profileImageClone.style.top), parseFloat(profileImageClone.style.width), parseFloat(profileImageClone.style.height));
-        const x = parseFloat(85);
-        const y = parseFloat(575);
+        const x = parseFloat(275);
+        const y = parseFloat(1920);
         const width = parseFloat(profileImageClone.style.width);
         const height = parseFloat(profileImageClone.style.height);
         const radius = width / 2;
@@ -279,7 +314,7 @@ const PosterContent = () => {
           // Draw the poster content on top of the background image
           ctx.drawImage(img, 0, 0);
   
-          const randomName = `Doctor_Day_Poster_${Math.random().toString(36).substring(7)}.png`;
+          const randomName = `Independence_Day_Poster_${Math.random().toString(36).substring(7)}.png`;
           // Convert the canvas to a data URL and create a download link
           const imageWithBackground = canvas.toDataURL("image/png");
           const link = document.createElement("a");
@@ -396,7 +431,7 @@ console.log("singalDocData",singalDocData);
                   // crossOrigin="anonymous"
                  />
                </div>
-               <div className={`namediv2 montserrat-fnt ${singalDocData && singalDocData.name && singalDocData.name.length > 16 ? 'long-text' : ''}`}>
+               <div className={`namediv2 montserrat-fnt ${singalDocData && singalDocData.name && singalDocData.name.length > 16 ? '' : ''}`}>
                  {singalDocData.name}
                </div>
                <div className="therapydiv2 montserrat-fnt">
