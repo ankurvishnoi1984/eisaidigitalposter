@@ -555,7 +555,14 @@ const formatTextWithTitleSpacing = (text="", maxCharsPerLine = 16) => {
     // profilenameClone.style.border = '1px solid blue'
   
     profileTherapyClone.style.position = "absolute";
-    profileTherapyClone.style.top = "47%";
+   if (singalDocData && singalDocData.name && singalDocData.name.length > 19) {
+     profileTherapyClone.style.top = "45%";
+   }else if(singalDocData && singalDocData.name && singalDocData.name.length > 16){
+     profileTherapyClone.style.top = "43%";
+
+    } else {
+     profileTherapyClone.style.top = "41%";
+   }
     profileTherapyClone.style.left = "52%";
     profileTherapyClone.style.fontSize = "55px";
     profileTherapyClone.style.fontFamily = "telegraf";
@@ -577,7 +584,16 @@ const formatTextWithTitleSpacing = (text="", maxCharsPerLine = 16) => {
 
   
     profileHospitalClone.style.position = "absolute";
-    profileHospitalClone.style.top = "50%";
+    if (singalDocData && singalDocData.name && singalDocData.name.length > 19) {
+      profileHospitalClone.style.top = "47%";
+    }else if(singalDocData && singalDocData.name && singalDocData.name.length > 16){
+      profileHospitalClone.style.top = "45%";
+
+    }
+    else{
+      profileHospitalClone.style.top = "43%";
+
+    }
     profileHospitalClone.style.left = "52%";
     profileHospitalClone.style.fontSize = "55px";
     profileHospitalClone.style.fontFamily = "telegraf";
@@ -799,27 +815,34 @@ console.log("singalDocData",singalDocData);
             
            }}
          >
-           <div className="row">
-             <div className=" text-center">
-               <div className="profile-image8">
-                 <img
-                   src={`${BASEURL}/uploads/${profileImageUrl}`}
-                   alt="doctor image"
-                   className="profile-poster8"
-                  // crossOrigin="anonymous"
-                 />
-               </div>
-               <div className={`namediv8 montserrat-fnt ${singalDocData && singalDocData.name && singalDocData.name.length > 16 ? 'long-text' : ''}`}>
-               {formatTextWithTitleSpacing(singalDocData.name)}
-               </div>
-               <div className="therapydiv8 montserrat-fnt">
-                          {singalDocData.therapy}
-                </div>
-                <div className="hospitaldiv8 montserrat-fnt">
-                          {singalDocData.hospital}
-                </div>
-             </div>
-           </div>
+                  <div className="row">
+                    <div className=" text-center">
+                      <div className="profile-image8">
+                        <img
+                          src={`${BASEURL}/uploads/${profileImageUrl}`}
+                          alt="doctor image"
+                          className="profile-poster8"
+                        // crossOrigin="anonymous"
+                        />
+                      </div>
+                      <div className={`namediv8 montserrat-fnt ${singalDocData && singalDocData.name && singalDocData.name.length > 16 ? 'long-text' : ''}`}>
+                        {formatTextWithTitleSpacing(singalDocData.name)}
+                      </div>
+                      <div className="therapydiv8 montserrat-fnt"
+                        style={{
+                          marginTop: singalDocData?.name?.length > 16 ? "190px" : "170px", // ✅ INLINE STYLE HERE
+                        }}
+                      >
+                        {singalDocData.therapy}
+                      </div>
+                      <div className="hospitaldiv8 montserrat-fnt"
+                        style={{
+                          marginTop: singalDocData?.name?.length > 16 ? "200px" : "180px", // ✅ INLINE STYLE HERE
+                        }}>
+                        {singalDocData.hospital}
+                      </div>
+                    </div>
+                  </div>
          </div>
          <div className="card-footer">
            <div className="text-center">
