@@ -153,6 +153,74 @@
    .hospitaldiv21{
     margin-top: 123px;
    }
+.poster-image3 {
+    width: 275px; 
+       height: 387px;
+    position: relative;
+    z-index: 10;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+ .profile-image3 {
+    position: absolute;
+     margin-top: 11px;
+    margin-left: -4.2px;
+
+}
+   .profile-poster3 {
+    vertical-align: middle;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+}
+.namediv3 {
+    position: absolute;
+      margin-top: 30px;
+    margin-left: 82px;
+    font-size: 8px;
+    width: 135px;
+    text-align: start;
+    color: #8e2d32;
+    /* font-style: italic; */
+    line-height: 1.2;
+    /* font-weight: 500; */
+    font-family: "Archivo Black", sans-serif;
+    /* border: 1px solid blue; */
+}
+.therapydiv3 {
+    position: absolute;
+    margin-top: 45px;
+    margin-left: 82px;
+    font-size: 7px;
+    width: 140px;
+    text-align: start;
+    color: #8e2d32;
+    /* font-style: italic; */
+    font-weight: 100;
+    font-family: "Balthazar", serif;
+}
+
+.hospitaldiv3 {
+    position: absolute;
+    margin-top: 62px;
+    margin-left: 82px;
+    font-size: 7px;
+    width: 125px;
+    text-align: start;
+    color: #8e2d32;
+    /* font-style: italic; */
+    font-weight: 100;
+    font-family: "Balthazar", serif;
+}
+
+   .therapydiv31{
+    margin-top: 112px;
+   }
+
+   .hospitaldiv31{
+    margin-top: 123px;
+   }
 
 
    .poster-image6 {
@@ -615,7 +683,7 @@
 
 
    /* for poster 3*/
-   .poster-image3 {
+   /* .poster-image3 {
     width: 250px; 
     height: 355px; 
     position: relative;
@@ -647,7 +715,7 @@
     color: #032160;
     font-weight: 800 !important;
     word-break: break-word;
-    /* border: 1px solid blue; */
+
    }
    .namediv3.long-text {
   
@@ -663,7 +731,7 @@
     font-weight: 700 !important;
     text-align: center;
     color: #032160;
-    /* border: 1px solid blue; */
+
    }
 
    .hospitaldiv3{
@@ -675,8 +743,8 @@
     font-weight: 700 !important;
     text-align: center;
     color: #032160;
-    /* border: 1px solid blue; */
-   }
+
+   } */
 
 
    /* for poster 5 */
