@@ -27,7 +27,24 @@ const PosterContent = () => {
   }, []);
 
  
+const formatTextWithTitleSpacing = (text="", maxCharsPerLine = 16) => {
+  const cleanText = text.trim();
+  if (cleanText.length <= maxCharsPerLine) {
+    return cleanText;
+  }
 
+  const splitIndex = cleanText.lastIndexOf(" ", maxCharsPerLine);
+  const firstPart = cleanText.slice(0, splitIndex);
+  const secondPart = cleanText.slice(splitIndex).trim();
+
+  return (
+    <>
+      {firstPart}
+      <br />
+      {secondPart}
+    </>
+  );
+};
  
 
   async function GetDoctorById() {
@@ -485,7 +502,165 @@ const PosterContent = () => {
       };
     };
   };
+ const handleSave4 = async () => {
+    const toastId = toast.loading("Processing your download...");
+    const poster = document.getElementById("pdiv8");
+    const posterClone = poster.cloneNode(true);
+    const profileImageClone = posterClone.querySelector(".profile-poster8");
+    const profilenameClone = posterClone.querySelector(".namediv8");
+    const profileTherapyClone = posterClone.querySelector(".therapydiv8");
+    const profileHospitalClone = posterClone.querySelector(".hospitaldiv8");
+    // console.log(profileTherapyClone.innerHTML)
+  
+    // Modify the clone
+    profileImageClone.style.width = "600px"; 
+    profileImageClone.style.height = "600px"; 
+    profileImageClone.style.position = "absolute";
+    profileImageClone.style.top = "37.7%";
+    profileImageClone.style.left = "4.5%";
+    //   profileImageClone.style.top = "99.7%";
+    // profileImageClone.style.left = "4.5%";
+    profileImageClone.style.borderRadius = "50%";
+  
+    // const maxLength = 16;
+    // const nameText = profilenameClone.textContent;
+    // if (nameText.length > maxLength) {
+    //   profilenameClone.style.top = "35%";
+    //   profilenameClone.style.lineHeight  = "1.3";
+    // } else {
+    //   profilenameClone.style.top = "35%";
+    // }
+  
+    profilenameClone.style.position = "absolute";
+    profilenameClone.style.top = "43.5%";
+    profilenameClone.style.left = "52%";
+    profilenameClone.style.fontSize = "60px";
+    profilenameClone.style.fontFamily = "telegraf";
+    profilenameClone.style.textAlign = 'start';
+    // profilenameClone.style.width = "1200px";
+    profilenameClone.style.color = '#784499';
+    profilenameClone.style.fontWeight = "900";
+//     profilenameClone.style.textShadow = `
+//   2px 0 #1900BB,
+//   -2px 0 #1900BB,
+//   0 2px #1900BB,
+//   0 -2px #1900BB,
+//   1.5px 1.5px #1900BB,
+//   -1.5px 1.5px #1900BB,
+//   1.5px -1.5px #1900BB,
+//   -1.5px -1.5px #1900BB
+// `;
 
+    profilenameClone.style.wordBreak = "break-word";
+    // profilenameClone.style.border = '1px solid blue'
+  
+    profileTherapyClone.style.position = "absolute";
+    profileTherapyClone.style.top = "47%";
+    profileTherapyClone.style.left = "52%";
+    profileTherapyClone.style.fontSize = "55px";
+    profileTherapyClone.style.fontFamily = "telegraf";
+    profileTherapyClone.style.textAlign = 'start';
+    // profileTherapyClone.style.width = "700px";
+    profileTherapyClone.style.color = '#a36bac';
+    profileTherapyClone.style.fontWeight = "500";
+//     profileTherapyClone.style.textShadow = `
+//   2px 0 #1900BB,
+//   -2px 0 #1900BB,
+//   0 2px #1900BB,
+//   0 -2px #1900BB,
+//   1.5px 1.5px #1900BB,
+//   -1.5px 1.5px #1900BB,
+//   1.5px -1.5px #1900BB,
+//   -1.5px -1.5px #1900BB
+// `;
+
+
+  
+    profileHospitalClone.style.position = "absolute";
+    profileHospitalClone.style.top = "50%";
+    profileHospitalClone.style.left = "52%";
+    profileHospitalClone.style.fontSize = "55px";
+    profileHospitalClone.style.fontFamily = "telegraf";
+    profileHospitalClone.style.textAlign = "start";
+    profileHospitalClone.style.width = "1200px";
+    profileHospitalClone.style.color = '#a36bac';
+    profileHospitalClone.style.fontWeight = "500";
+//     profileHospitalClone.style.textShadow = `
+//   2px 0 #1900BB,
+//   -2px 0 #1900BB,
+//   0 2px #1900BB,
+//   0 -2px #1900BB,
+//   1.5px 1.5px #1900BB,
+//   -1.5px 1.5px #1900BB,
+//   1.5px -1.5px #1900BB,
+//   -1.5px -1.5px #1900BB
+// `;
+  
+    // Load the profile image
+    const profileImageSrc = profileImageClone.src;
+    const profileImage = new Image();
+    profileImage.src = profileImageSrc;
+    profileImage.crossOrigin = "anonymous";
+  
+    profileImage.onload = async () => {
+      // Create a temporary <img> element with the background image as its source
+      const bgImg = new Image();
+      bgImg.src = `/images/epilepsy.jpg`;
+  
+      // Wait for the background image to load before generating the image
+      bgImg.onload = async () => {
+        // Create a temporary canvas
+        const canvas = document.createElement("canvas");
+        canvas.width = bgImg.width;
+        canvas.height = bgImg.height;
+        const ctx = canvas.getContext("2d");
+  
+        // Draw the background image onto the canvas
+        ctx.drawImage(bgImg, 0, 0);
+  
+        // Draw the profile image onto the canvas
+       // ctx.drawImage(profileImage, parseFloat(profileImageClone.style.left), parseFloat(profileImageClone.style.top), parseFloat(profileImageClone.style.width), parseFloat(profileImageClone.style.height));
+        const x = parseFloat(63);
+        const y = parseFloat(920);
+        const width = parseFloat(profileImageClone.style.width);
+        const height = parseFloat(profileImageClone.style.height);
+        const radius = width / 2;
+  
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(x + radius, y + radius, radius, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.clip();
+  
+        ctx.drawImage(profileImage, x, y, width, height);
+        ctx.restore();
+        // Draw the poster content on top of the background image
+        const dataUrl = await domtoimage.toPng(posterClone, {
+          width: 1375,
+          height: 2444,
+        });
+  
+        // Get the Image data from the poster content
+        const img = new Image();
+        img.src = dataUrl;
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          // Draw the poster content on top of the background image
+          ctx.drawImage(img, 0, 0);
+  
+          const randomName = `National_Epilepsy_Day_Poster_${Math.random().toString(36).substring(7)}.png`;
+          // Convert the canvas to a data URL and create a download link
+          const imageWithBackground = canvas.toDataURL("image/png");
+          const link = document.createElement("a");
+          link.href = imageWithBackground;
+          link.download = randomName;
+          link.click();
+          toast.success("Download complete!", { id: toastId });
+          canvas.remove();
+        };
+      };
+    };
+  };
   
   
 
@@ -613,6 +788,53 @@ console.log("singalDocData",singalDocData);
          </div>
          </div> :""
              }
+               {subCatId == 4 ? 
+         <div className="card bg-light ml-3">
+         <div
+           className="card-body pt-0 poster-image8"
+           id="pdiv8"
+           style={{
+             backgroundImage: `url(/images/epilepsy.jpg)`,
+             fontFamily: 'Montserrat, sans-serif'
+            
+           }}
+         >
+           <div className="row">
+             <div className=" text-center">
+               <div className="profile-image8">
+                 <img
+                   src={`${BASEURL}/uploads/${profileImageUrl}`}
+                   alt="doctor image"
+                   className="profile-poster8"
+                  // crossOrigin="anonymous"
+                 />
+               </div>
+               <div className={`namediv8 montserrat-fnt ${singalDocData && singalDocData.name && singalDocData.name.length > 16 ? 'long-text' : ''}`}>
+               {formatTextWithTitleSpacing(singalDocData.name)}
+               </div>
+               <div className="therapydiv8 montserrat-fnt">
+                          {singalDocData.therapy}
+                </div>
+                <div className="hospitaldiv8 montserrat-fnt">
+                          {singalDocData.hospital}
+                </div>
+             </div>
+           </div>
+         </div>
+         <div className="card-footer">
+           <div className="text-center">
+             <div
+               onClick={() =>
+                 handleSave4()
+               }
+               className="btn btn-sm btn-danger"
+             >
+               <i className="fas fa-download"></i> Image
+             </div>
+           </div>
+         </div>
+         </div> :""
+             }
          {subCatId == 6 ? 
          <div className="card bg-light ml-3">
          <div
@@ -637,7 +859,7 @@ console.log("singalDocData",singalDocData);
                <div className={`namediv2 montserrat-fnt ${singalDocData && singalDocData.name && singalDocData.name.length > 16 ? '' : ''}`}>
                  {singalDocData.name}
                </div>
-               <div className="therapydiv2 montserrat-fnt">
+               <div className="therapydiv2 montserrat-fnt" >
                           {singalDocData.therapy}
                 </div>
                 <div className="hospitaldiv2 montserrat-fnt">
