@@ -678,7 +678,29 @@ const formatTextWithTitleSpacing = (text="", maxCharsPerLine = 16) => {
     };
   };
   
-  
+  const wrapHospitalName = (text, maxLen = 24) => {
+  if (!text) return "";
+
+  if (text.length <= maxLen) return text;
+
+  const words = text.split(" ");
+  let line = "";
+  let wrapped = [];
+
+  words.forEach(word => {
+    if ((line + word).length <= maxLen) {
+      line += word + " ";
+    } else {
+      wrapped.push(line.trim());
+      line = word + " ";
+    }
+  });
+
+  if (line.trim().length > 0) wrapped.push(line.trim());
+
+  return wrapped.join("\n");
+};
+
 
 
 console.log("singalDocData",singalDocData);
@@ -835,11 +857,15 @@ console.log("singalDocData",singalDocData);
                       >
                         {singalDocData.therapy}
                       </div>
-                      <div className="hospitaldiv8 montserrat-fnt"
+                      <div
+                        className="hospitaldiv8 montserrat-fnt"
                         style={{
-                          marginTop: singalDocData?.name?.length > 16 ? "200px" : "180px", // ✅ INLINE STYLE HERE
-                        }}>
-                        {singalDocData.hospital}
+                          marginTop:
+                            singalDocData?.name?.length > 16 ? "200px" : "180px",
+                          whiteSpace: "pre-line", // IMPORTANT
+                        }}
+                      >
+                        {wrapHospitalName(singalDocData.hospital)}
                       </div>
                     </div>
                   </div>
