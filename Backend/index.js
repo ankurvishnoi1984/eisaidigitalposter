@@ -347,6 +347,108 @@ app.post('/copy-doctors', (req, res) => {
   });
 });
 
+app.post('/copy-doctors', (req, res) => {
+  const { fromSubCatId, toSubCatId, catId } = req.body;
+
+  if (!fromSubCatId || !toSubCatId) {
+    return res.status(400).send('fromSubCatId and toSubCatId are required');
+  }
+
+  const selectSourceQuery = `
+    SELECT fk_emp_id, cat_id, subcat_id, name, imgurl, city, therapy,
+           qualification, mobile, hospital 
+    FROM doctordata 
+    WHERE subcat_id = ? AND status = "Y"
+  `;
+
+  const selectExistingQuery = `
+    SELECT name, mobile 
+    FROM doctordata 
+    WHERE subcat_id = ? AND status = "Y"
+  `;
+
+  const insertQuery = `
+    INSERT INTO doctordata 
+        (fk_emp_id, cat_id, subcat_id, name, imgurl, city, therapy,
+         qualification, mobile, hospital)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  db.getConnection((err, connection) => {
+    if (err) return res.status(500).send('Failed to get database connection');
+
+    connection.beginTransaction(async (err) => {
+      if (err) {
+        connection.release();
+        return res.status(500).send('Failed to start transaction');
+      }
+
+      try {
+        // 1. Get source doctors
+        const [sourceDoctors] = await connection.promise().query(selectSourceQuery, [fromSubCatId]);
+
+        if (sourceDoctors.length === 0) {
+          connection.rollback(() => {
+            connection.release();
+            res.status(404).send('No doctors found for the given SubCatId');
+          });
+          return;
+        }
+
+        // 2. Load existing destination doctors
+        const [existing] = await connection.promise().query(selectExistingQuery, [toSubCatId]);
+
+        // Create a map for quick comparison
+        // Key = name.toLowerCase().trim() + "|" + mobile.trim()
+        const existingSet = new Set(
+          existing.map(doc =>
+            doc.name.trim().toLowerCase() + "|" + (doc.mobile || "").trim()
+          )
+        );
+
+        // 3. Insert if (name OR mobile is different)
+        const insertTasks = sourceDoctors.map(doctor => {
+          const key = doctor.name.trim().toLowerCase() + "|" + (doctor.mobile || "").trim();
+
+          // If BOTH name AND mobile match → duplicate → skip
+          if (existingSet.has(key)) {
+            return Promise.resolve();
+          }
+
+          // ELSE insert doctor
+          return connection.promise().query(insertQuery, [
+            doctor.fk_emp_id,
+            catId,
+            toSubCatId,
+            doctor.name,
+            doctor.imgurl,
+            doctor.city,
+            doctor.therapy,
+            doctor.qualification,
+            doctor.mobile,
+            doctor.hospital
+          ]);
+        });
+
+        await Promise.all(insertTasks);
+
+        connection.commit(() => {
+          connection.release();
+          res.status(200).send({ message: 'Data copied successfully', errorCode: 1 });
+        });
+
+      } catch (error) {
+        connection.rollback(() => {
+          connection.release();
+          res.status(500).send('Error inserting data');
+        });
+      }
+    });
+  });
+});
+
+
+
 
 
 // app.post('/copy-doctors', (req, res) => {

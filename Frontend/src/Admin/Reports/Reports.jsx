@@ -166,12 +166,12 @@ const Reports = () => {
     }
    }
    
-   const handelDocReport1 = async()=>{
-    
+  const handelDocReport1 = async () => {
+
     try {
-      const response = await axios.post(`${BASEURL}/getAllEmpDocExcel1`,{subCatId:subCat}); // Replace with your API URL
+      const response = await axios.post(`${BASEURL}/getAllEmpDocExcel1`, { subCatId: subCat }); // Replace with your API URL
       console.log(response)
-      if(response.status === 200){
+      if (response.status === 200) {
         const headers = [
           "Employee Name",
           "Designation",
@@ -182,34 +182,41 @@ const Reports = () => {
           "City",
           "Mobile No.",
           "Hospital Name",
+          "Created Date",
         ];
-    
+
         // Map the data to match the custom column headers
         const mappedData = response?.data?.map((item) => ({
-          "Employee Name":item.EmployeeName,
-          "Designation":item.Designation,
-          "Hq":item.HQ,
-          "Doctor Name":item.name,
-          "Qualification":item.qualification,
-          "Therapy":item.therapy,
-          "City" : item.city,
-          "Mobile No.":item.mobile,
+          "Employee Name": item.EmployeeName,
+          "Designation": item.Designation,
+          "Hq": item.HQ,
+          "Doctor Name": item.name,
+          "Qualification": item.qualification,
+          "Therapy": item.therapy,
+          "City": item.city,
+          "Mobile No.": item.mobile,
           "Hospital Name": item.hospital,
+          "Created Date": new Date(item.created_at).toLocaleString("en-GB", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+          })
         }));
-    
+
         const ws = XLSX.utils.json_to_sheet(mappedData, { header: headers });
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Data");
         XLSX.writeFile(wb, "ESAI_AllDoctorData.xlsx");
-      
-      }
-     
 
+      }
 
     } catch (error) {
       console.error('An error occurred:', error);
     }
-   }
+  }
    
   async function getAllZmList() {
     try {

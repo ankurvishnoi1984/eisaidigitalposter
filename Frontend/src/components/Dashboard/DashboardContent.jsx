@@ -212,7 +212,7 @@ const DashboardContent = () => {
     try {
       
        setLoading(true);
-       const res = await axios.post(`${BASEURL}/copy-doctors`,{fromSubCatId :selectedSubCatId, toSubCatId:subCatId, catId:catId});
+       const res = await axios.post(`${BASEURL}/copyDoctorsV2`,{fromSubCatId :selectedSubCatId, toSubCatId:subCatId, catId:catId});
        if(res.data.errorCode === 1){
           toast.success('Doctor Data copied successfully')
           setBrowsePopUp(false);
