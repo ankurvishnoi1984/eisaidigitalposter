@@ -2756,14 +2756,14 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #ffffff;
-  background-color: #23052d;
+  background-color: #013a7a;
   border-color: #0062cc;
 }
 
 .btn-primary:focus,
 .btn-primary.focus {
   color: #ffffff;
-  background-color: #23052d;
+  background-color: #013a7a;
   border-color: #0062cc;
   box-shadow: none, 0 0 0 0 rgba(38, 143, 255, 0.5);
 }
@@ -2883,14 +2883,14 @@ fieldset:disabled a.btn {
 .btn-info:hover {
   color: #ffffff;
   background-color: #138496;
-  border-color: #370547;
+  border-color: #013a7a;
 }
 
 .btn-info:focus,
 .btn-info.focus {
   color: #ffffff;
   background-color: #138496;
-  border-color: #370547;
+  border-color: #013a7a;
   box-shadow: none, 0 0 0 0 rgba(58, 176, 195, 0.5);
 }
 
@@ -2905,7 +2905,7 @@ fieldset:disabled a.btn {
 .btn-info:not(:disabled):not(.disabled).active,
 .show > .btn-info.dropdown-toggle {
   color: #ffffff;
-  background-color: #370547;
+  background-color: #013a7a;
   border-color: #10707f;
 }
 
@@ -5567,7 +5567,7 @@ a.badge-success.focus {
 a.badge-info:hover,
 a.badge-info:focus {
   color: #ffffff;
-  background-color: #370547;
+  background-color: #013a7a;
 }
 
 a.badge-info:focus,
@@ -7207,7 +7207,7 @@ a.bg-info:hover,
 a.bg-info:focus,
 button.bg-info:hover,
 button.bg-info:focus {
-  background-color: #370547 !important;
+  background-color: #013a7a !important;
 }
 
 .bg-warning {
@@ -20970,7 +20970,7 @@ html.maximized-card {
 }
 
 .callout.callout-info {
-  border-left-color: #370547;
+  border-left-color: #013a7a;
 }
 
 .callout.callout-success {
@@ -32631,7 +32631,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-info.btn:hover {
-  border-color: #370547;
+  border-color: #013a7a;
   color: #ececec;
 }
 
@@ -32639,7 +32639,7 @@ blockquote.quote-gray-dark h6 {
 .bg-info.btn:not(:disabled):not(.disabled).active,
 .bg-info.btn:active,
 .bg-info.btn.active {
-  background-color: #370547 !important;
+  background-color: #013a7a !important;
   border-color: #10707f;
   color: #ffffff;
 }
@@ -33091,7 +33091,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-cyan.btn:hover {
-  border-color: #370547;
+  border-color: #013a7a;
   color: #ececec;
 }
 
@@ -33099,7 +33099,7 @@ blockquote.quote-gray-dark h6 {
 .bg-cyan.btn:not(:disabled):not(.disabled).active,
 .bg-cyan.btn:active,
 .bg-cyan.btn.active {
-  background-color: #370547 !important;
+  background-color: #013a7a !important;
   border-color: #10707f;
   color: #ffffff;
 }
@@ -33215,7 +33215,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-gradient-primary.btn:hover {
-  background: #23052d linear-gradient(180deg, #267fde, #23052d) repeat-x !important;
+  background: #013a7a linear-gradient(180deg, #267fde, #013a7a) repeat-x !important;
 }
 
 .bg-gradient-primary.btn:not(:disabled):not(.disabled):active,
@@ -33330,7 +33330,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-gradient-info.btn:hover {
-  border-color: #370547;
+  border-color: #013a7a;
   color: #ececec;
 }
 
@@ -33350,7 +33350,7 @@ blockquote.quote-gray-dark h6 {
 .bg-gradient-info.btn:not(:disabled):not(.disabled).active,
 .bg-gradient-info.btn:active,
 .bg-gradient-info.btn.active {
-  background: #370547 linear-gradient(180deg, #358e9c, #370547) repeat-x !important;
+  background: #013a7a linear-gradient(180deg, #358e9c, #013a7a) repeat-x !important;
 }
 
 .bg-gradient-warning {
@@ -33775,7 +33775,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-gradient-blue.btn:hover {
-  background: #23052d linear-gradient(180deg, #267fde, #23052d) repeat-x !important;
+  background: #013a7a linear-gradient(180deg, #267fde, #013a7a) repeat-x !important;
 }
 
 .bg-gradient-blue.btn:not(:disabled):not(.disabled):active,
@@ -34130,7 +34130,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-gradient-cyan.btn:hover {
-  border-color: #370547;
+  border-color: #013a7a;
   color: #ececec;
 }
 
@@ -34150,7 +34150,7 @@ blockquote.quote-gray-dark h6 {
 .bg-gradient-cyan.btn:not(:disabled):not(.disabled).active,
 .bg-gradient-cyan.btn:active,
 .bg-gradient-cyan.btn.active {
-  background: #370547 linear-gradient(180deg, #358e9c, #370547) repeat-x !important;
+  background: #013a7a linear-gradient(180deg, #358e9c, #013a7a) repeat-x !important;
 }
 
 .bg-gradient-white {

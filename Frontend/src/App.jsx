@@ -18,6 +18,7 @@ import Category from './components/Category/Category';
 import SubCategory from './components/SubCategory/SubCategory';
 import { Toaster } from 'react-hot-toast';
 import Password from './components/ResetPassword/Password';
+import Employee from './components/employees/employee';
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
        <Route path='/dashboard/report' element={<AdminProtectdRoute><EmpReports/></AdminProtectdRoute>}/>
        <Route path='/report' element={<AdminProtectdRoute><Reports/></AdminProtectdRoute>}/>
        <Route path='/viewdoc/:id' element={<AdminProtectdRoute><ViewDoc/></AdminProtectdRoute>}/>
-      
+      <Route path='/employee' element={<AdminProtectdRoute><Employee/></AdminProtectdRoute>}/>
       <Route element={<DashboardStyle/>} >
         <Route path='/dashboard' element={<ProtectdRoute><DashboardContent/></ProtectdRoute>}/>
         <Route path='/category' element={<ProtectdRoute><Category/></ProtectdRoute>}/>

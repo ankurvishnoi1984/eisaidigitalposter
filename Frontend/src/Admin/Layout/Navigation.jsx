@@ -95,6 +95,16 @@ const Navigation = () => {
           <span className="xn-text">Summary Reports</span>
         </Link>
       </li>
+       <li>
+        <Link
+          to={"/employee"}
+          className={activeItem === "/employee" ? "active-link" : ""}
+        >
+          <span className="fas fa-file p-1"></span>
+          <span className="xn-text">Employee Manage</span>
+          <span className="badge-heartbeat">New</span>
+        </Link>
+      </li>
     </ul>
   );
 };

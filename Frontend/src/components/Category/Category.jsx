@@ -23,12 +23,13 @@ const Category = () => {
         GetCategory()
     },[])
 
-    const handelCatChange = async(catId)=>{
+    const handelCatChange = async(catId,CatName)=>{
       //console.log(catId)
        if(catId === 3){
         return
        }
       sessionStorage.setItem("catId",catId);
+       sessionStorage.setItem("catName", CatName);
       navigate('/subcategory')
       
     }
@@ -36,7 +37,7 @@ const Category = () => {
     <>
        <div className='row'>
             {category.map((e) => (
-                <div key={e.catid} className='col-md-6' onClick={() => handelCatChange(e.catid)}>
+                <div key={e.catid} className='col-md-6' onClick={() => handelCatChange(e.catid,e.name)}>
                     <div className='cat_sub_div'>{e.name}</div>
                 </div>
             ))}

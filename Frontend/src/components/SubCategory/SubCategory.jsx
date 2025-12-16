@@ -7,9 +7,10 @@ import toast from 'react-hot-toast'
 //import { toast } from 'react-toastify'
 const SubCategory = () => {
 
+
   const catId = sessionStorage.getItem('catId');
     const [subCategory, setSubCategory] = useState([]);
-
+const catName = sessionStorage.getItem("catName") || "Category";
     const navigate = useNavigate()
 
     async function GetSubCategory(){
@@ -25,18 +26,37 @@ const SubCategory = () => {
       GetSubCategory()
     },[])
 
-    const handelSubCatChange = async(subCatId,isPoster)=>{
+    const handelSubCatChange = async(subCatId,isPoster,subCatName,CatName)=>{
       
       if(isPoster === "N"){
         toast.error("Poster coming soon")
         return;
       }
       sessionStorage.setItem("subCatId",subCatId);
+       sessionStorage.setItem("subCatName", subCatName);  
+         sessionStorage.setItem("CatName", CatName);  
       navigate('/dashboard')
       
     }
   return (
     <>
+    <div className="breadcrumb-wrapper">
+  <div className=" breadcrumb-inner">
+  
+
+    <nav aria-label="breadcrumb" className="breadcrumb-nav">
+      <ol className="breadcrumb-list">
+        <li className="crumb crumb-current">
+ 
+            {catName || "Category"}
+         
+        </li>
+
+       
+      </ol>
+    </nav>
+  </div>
+</div>
     <div
         className="content-header"
         style={{ backgroundColor: "#39a6cf", color: "#fff", height:"50px" }}
@@ -58,7 +78,7 @@ const SubCategory = () => {
         </div>
       </div>
        <div className='d-flex sub_cat_main_div row'>
-        {subCategory.map((e)=><div key={e.subcat_id} onClick={()=>handelSubCatChange(e.subcat_id,e.isPoster)} className='sub_cat_sub_div col-sm-3'>{e.name}</div>)}
+        {subCategory.map((e)=><div key={e.subcat_id} onClick={()=>handelSubCatChange(e.subcat_id,e.isPoste,e.name)} className='sub_cat_sub_div col-sm-3'>{e.name}</div>)}
           
        </div>
     </>

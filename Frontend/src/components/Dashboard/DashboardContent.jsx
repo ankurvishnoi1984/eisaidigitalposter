@@ -39,7 +39,8 @@ const DashboardContent = () => {
   const [categoryBySubcatId,setCategoryBySubCatId] = useState([])
   const [selectedSubCatId, setSelectedSubCatId] = useState('')
   const empId = sessionStorage.getItem("userId");
-
+const catName = sessionStorage.getItem("catName") || "Category";
+const subCatName = sessionStorage.getItem("subCatName") || "Subcategory";
   //console.log(" dfdfdgfdgfdg",categoryBySubcatId)
   const [message, setMessage] = useState('');
 
@@ -240,6 +241,27 @@ const DashboardContent = () => {
 
   return (
     <div>
+
+<div className="breadcrumb-wrapper">
+  <div className=" breadcrumb-inner">
+  
+
+    <nav aria-label="breadcrumb" className="breadcrumb-nav">
+      <ol className="breadcrumb-list">
+        <li className="crumb crumb-link">
+          <Link to="/subcategory" title={catName || "Category"}>
+            {catName || "Category"}
+          </Link>
+        </li>
+
+        <li className="crumb crumb-current" aria-current="page" title={subCatName || "Subcategory"}>
+          {subCatName || "Subcategory"}
+        </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
       <div
         className="content-header"
         style={{ backgroundColor: "#39a6cf", color: "#fff" }}

@@ -2,3 +2,39 @@
     /* background-color: #04182b; */
     background-color: #275874;
   }
+
+  .badge-heartbeat {
+    background: #ff1744;
+    color: #fff;
+    padding: 1px 8px;
+    font-size: 10px;
+    border-radius: 12px;
+    margin-left: 6px;
+    animation: heartbeat 2.5s infinite;
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.2);
+    }
+    40% {
+        transform: scale(1);
+    }
+    70% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* NEW: bump specificity for inside nav-link */
+.nav-link .badge-heartbeat {
+    animation: heartbeat 2.5s infinite !important;
+}

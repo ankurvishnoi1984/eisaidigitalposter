@@ -234,7 +234,7 @@ body.page-container-boxed .page-container {
   z-index: 3;
 }
 .x-navigation {
-  /* background: #370547; */
+  /* background: #013a7a; */
   /* NAV LIST ELEMENT */
   /* END NAV LIST ELEMENT */
   /* NAV LIST FIRST ELEMENT */
@@ -423,7 +423,7 @@ body.page-container-boxed .page-container {
   color: #fff !important;
 }
 .x-navigation > li.xn-logo > a:first-child:hover {
-  /* background-color: #370547; */
+  /* background-color: #013a7a; */
 }
 .x-navigation .x-navigation-control {
   position: absolute;
@@ -924,7 +924,7 @@ body.page-container-boxed .page-container {
 }
 .btn-success {
   background-color: #0078a5;
-  border-color: #370547;
+  border-color: #013a7a;
 }
 .btn-success:hover,
 .btn-success:focus,
@@ -1258,7 +1258,7 @@ td.dataTables_empty {
 .dataTables_paginate .paginate_button.current:hover {
   background: #0078a5;
   color: #fff;
-  border-color: #370547;
+  border-color: #013a7a;
 }
 .dataTables_paginate a.paginate_disabled_previous,
 .dataTables_paginate a.paginate_button_disabled,
@@ -1338,7 +1338,7 @@ td.dataTables_empty {
   .x-navigation {
     max-height: 50px;
     overflow: hidden;
-    /* background: #370547; */
+    /* background: #013a7a; */
   }
   .x-navigation.x-navigation-panel {
     height: 50px;
@@ -1429,7 +1429,7 @@ td.dataTables_empty {
 }
 
 .pag-but-bg {
-  background-color: #370547;
+  background-color: #013a7a;
   color: white;
   padding: 5px 15px;
 }
