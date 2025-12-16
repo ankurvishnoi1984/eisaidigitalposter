@@ -9,7 +9,7 @@ const multer = require('multer');
 const path = require("path");
 const fs = require("fs");
 const logger = require("./utils/logger");
-
+const XLSX = require("xlsx");
 const csv = require('csv-parser');
 const nodemailer = require("nodemailer");
 // Increase payload size limit
@@ -3218,7 +3218,366 @@ function generateRandomNumber(min = 10000, max = 99999) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+app.post("/addEmp", (req, res) => {
+  const {
+    empcode,
+    name,
+    role,
+    designation,
+    hq,
+    region,
+    state,
+    zone,
+    email,
+    reporting,
+    password
+  } = req.body;
 
+  const query = `
+    INSERT INTO empmm
+    (EmpCode, EmployeeName, Role, Designation, HQ, Region, State, Zone,
+     Email, Reporting, Password, isPasswordReset, status)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'N', 'Y')
+  `;
+
+  db.query(
+    query,
+    [
+      empcode,
+      name,
+      role,
+      designation,
+      hq,
+      region,
+      state,
+      zone,
+      email,
+      reporting,
+      password
+    ],
+    (err) => {
+      if (err) {
+        logger.error(err.message);
+        return res.status(500).json({ errorCode: "0", message: err.message });
+      }
+
+      res.status(200).json({
+        message: "Employee Added Successfully",
+        errorCode: "1"
+      });
+    }
+  );
+});
+app.get("/getAllEmployee", (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 20;
+  const offset = (page - 1) * limit;
+  const search = req.query.searchName || "";
+
+  const dataQuery = `
+    SELECT empid, EmpCode, EmployeeName, Email, Role, HQ, State, Reporting
+    FROM empmm
+    WHERE EmployeeName LIKE ? AND status='Y'
+    LIMIT ? OFFSET ?
+  `;
+
+  const countQuery = `
+    SELECT COUNT(*) AS totalCount
+    FROM empmm
+    WHERE EmployeeName LIKE ? AND status='Y'
+  `;
+
+  db.query(dataQuery, [`%${search}%`, limit, offset], (err, users) => {
+    if (err) {
+      logger.error(err.message);
+      return res.status(500).json({ errorCode: "0", message: err.message });
+    }
+
+    db.query(countQuery, [`%${search}%`], (err2, countRes) => {
+      if (err2) {
+        logger.error(err2.message);
+        return res.status(500).json({ errorCode: "0", message: err2.message });
+      }
+
+      res.status(200).json({
+        users,
+        totalCount: countRes[0].totalCount
+      });
+    });
+  });
+});
+app.delete("/deleteEmp/:id", (req, res) => {
+  const empid = req.params.id;
+
+  db.query(
+    "UPDATE empmm SET status='N' WHERE empid=?",
+    [empid],
+    (err) => {
+      if (err) {
+        logger.error(err.message);
+        return res.status(500).json({ errorCode: "0", message: err.message });
+      }
+
+      res.status(200).json({
+        message: "Employee Deleted Successfully",
+        errorCode: "1"
+      });
+    }
+  );
+});
+app.get("/getEmpWithId/:id", (req, res) => {
+  const empid = req.params.id;
+
+  db.query(
+    "SELECT * FROM empmm WHERE empid=?",
+    [empid],
+    (err, result) => {
+      if (err) {
+        logger.error(err.message);
+        return res.status(500).json({ errorCode: "0", message: err.message });
+      }
+
+      res.status(200).json({
+        user: result[0],
+        errorCode: "1"
+      });
+    }
+  );
+});
+app.patch("/updateEmpWithId/:id", (req, res) => {
+  const empid = req.params.id;
+  const updateData = {};
+
+  if (req.body.empcode) updateData.EmpCode = req.body.empcode;
+  if (req.body.name) updateData.EmployeeName = req.body.name;
+  if (req.body.role) updateData.Role = req.body.role;
+  if (req.body.designation) updateData.Designation = req.body.designation;
+  if (req.body.hq) updateData.HQ = req.body.hq;
+  if (req.body.region) updateData.Region = req.body.region;
+  if (req.body.state) updateData.State = req.body.state;
+  if (req.body.zone) updateData.Zone = req.body.zone;
+  if (req.body.email) updateData.Email = req.body.email;
+  if (req.body.reporting) updateData.Reporting = req.body.reporting;
+  if (req.body.password) updateData.Password = req.body.password;
+
+  db.query(
+    "UPDATE empmm SET ? WHERE empid=?",
+    [updateData, empid],
+    (err) => {
+      if (err) {
+        logger.error(err.message);
+        return res.status(500).json({ errorCode: "0", message: err.message });
+      }
+
+      res.status(200).json({
+        message: "Employee Updated Successfully",
+        errorCode: "1"
+      });
+    }
+  );
+});
+app.post("/bulkUploadUsers", memUpload.any(), async (req, res) => {
+  try {
+    if (!req.files || !req.files.length) {
+      return res.status(400).json({ message: "Please upload XLSX file" });
+    }
+
+    const workbook = XLSX.read(req.files[0].buffer, { type: "buffer" });
+    const sheetName = workbook.SheetNames[0];
+    const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+    const isValidEmail = (email) => {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+    if (!rows.length) {
+      return res.status(400).json({ message: "XLSX is empty" });
+    }
+
+    const successList = [];
+    const failedList = [];
+    const seenEmpCodes = new Set();
+
+    // 🔹 Fetch Designation → Role map once
+    const designationMap = await new Promise((resolve, reject) => {
+      db.query(
+        `SELECT designation, shortcode FROM designation_mst`,
+        (err, result) => {
+          if (err) return reject(err);
+          const map = {};
+          result.forEach(r => {
+            map[r.designation.trim().toLowerCase()] = r.shortcode;
+          });
+          resolve(map);
+        }
+      );
+    });
+
+    const empcodes = rows.map(r => r.empcode?.toString().trim());
+    const placeholders = empcodes.map(() => "?").join(",");
+
+    const existing = await new Promise((resolve, reject) => {
+      db.query(
+        `SELECT EmpCode FROM empmm WHERE EmpCode IN (${placeholders}) AND status='Y'`,
+        empcodes,
+        (err, result) => err ? reject(err) : resolve(result)
+      );
+    });
+
+    const existingSet = new Set(existing.map(e => e.EmpCode));
+
+    for (let row of rows) {
+      const empcode = row.empcode?.toString().trim();
+      const name = row.name?.trim();
+      const email = row.email?.trim();
+      const designation = row.designation?.trim();
+      const password = row.password?.trim();
+
+      // 🔴 Required field validation
+      if (!empcode || !name || !email || !designation || !password) {
+     
+        failedList.push({
+          empcode,
+          name,
+          email,
+          designation,
+          hq: row.hq || null,
+          region: row.region || null,
+          state: row.state || null,
+          zone: row.zone || null,
+          reporting: row.reporting || null,
+          password,
+          Status: "Failed",
+          Remark: "Missing fields"
+        });
+        continue;
+      }
+
+      // 🔴 Email validation
+      if (!isValidEmail(email)) {
+     
+        failedList.push({
+          empcode,
+          name,
+          email,
+          designation,
+          hq: row.hq || null,
+          region: row.region || null,
+          state: row.state || null,
+          zone: row.zone || null,
+          reporting: row.reporting || null,
+          password,
+          Status: "Failed",
+          Remark: "Invalid email"
+        });
+        continue;
+      }
+
+      // 🔴 Duplicate in Excel
+      if (seenEmpCodes.has(empcode)) {
+      
+        failedList.push({
+          empcode,
+          name,
+          email,
+          designation,
+          hq: row.hq || null,
+          region: row.region || null,
+          state: row.state || null,
+          zone: row.zone || null,
+          reporting: row.reporting || null,
+          password,
+          Status: "Failed",
+          Remark: "Duplicate in XLSX"
+        });
+        continue;
+      }
+
+      // 🔴 Already exists
+      if (existingSet.has(empcode)) {
+     
+        failedList.push({
+          empcode,
+          name,
+          email,
+          designation,
+          hq: row.hq || null,
+          region: row.region || null,
+          state: row.state || null,
+          zone: row.zone || null,
+          reporting: row.reporting || null,
+          password,
+          Status: "Failed",
+          Remark: "Already exists"
+        });
+        continue;
+      }
+
+      // 🔴 Designation validation
+      const role = designationMap[designation.toLowerCase()];
+      if (!role) {
+        failedList.push({
+          empcode,
+          name,
+          email,
+          designation,
+          hq: row.hq || null,
+          region: row.region || null,
+          state: row.state || null,
+          zone: row.zone || null,
+          reporting: row.reporting || null,
+          password,
+          Status: "Failed",
+          Remark: "Invalid designation"
+        });
+        continue;
+      }
+
+      // ✅ Valid row
+      successList.push([
+        empcode,
+        name,
+        role,                    // ← derived from designation
+        designation,
+        row.hq || null,
+        row.region || null,
+        row.state || null,
+        row.zone || null,
+        email,
+        row.reporting || null,
+        password,
+        "N",
+        "Y"
+      ]);
+
+      seenEmpCodes.add(empcode);
+    }
+
+    if (successList.length) {
+      await new Promise((resolve, reject) => {
+        db.query(
+          `INSERT INTO empmm
+          (EmpCode, EmployeeName, Role, Designation, HQ, Region, State, Zone,
+           Email, Reporting, Password, isPasswordReset, status)
+          VALUES ?`,
+          [successList],
+          (err) => err ? reject(err) : resolve()
+        );
+      });
+    }
+
+    res.status(200).json({
+      message: "Bulk upload completed",
+      successCount: successList.length,
+      failedCount: failedList.length,
+      successList,
+      failedList,
+      errorCode: "1"
+    });
+
+  } catch (err) {
+    logger.error(err.message);
+    res.status(500).json({ errorCode: "0", message: err.message });
+  }
+});
 
 const PORT = process.env.PORT || 8043
 app.listen(PORT,()=>{
