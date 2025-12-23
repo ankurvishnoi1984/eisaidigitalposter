@@ -29,5 +29,19 @@
     font-weight: 200;
     font-style: normal;
   }
-  
+  body{
+    font-weight: 600;
+  }
 
+.msgnote{
+  color: #bb0909;
+  font-weight: 500;
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+ 
+  .msgnote{
+    display: block;
+  }
+}

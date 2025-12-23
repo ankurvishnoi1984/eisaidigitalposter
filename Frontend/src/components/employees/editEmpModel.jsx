@@ -16,26 +16,62 @@ function EditModel({ setEditUserModel, empData, getfun }) {
 
   const [designation, setDesignation] = useState("");
   const [rolee, setRolee] = useState("");
-
+const [reporting, setReporting] = useState("");
+const [reportingList, setReportingList] = useState([]);
+const [showReporting, setShowReporting] = useState(true);
   const [showConfirmation, setShowConfirmation] = useState(false);
 const roleToDesignationMap = {
   ZM: "Zonal Manager - CNS",
   RM: "Regional Manager - CNS",
   HCE: "Health Care Manager - CNS"
 };
+const fetchReportingEmployees = async (role) => {
+  try {
+    const res = await axios.get(
+      `${BASEURL}/getReportingEmployees?role=${role}`
+    );
+    setReportingList(res.data.users || []);
+  } catch (error) {
+    console.log(error);
+  }
+};
   // PREFILL DATA
-  useEffect(() => {
-    if (empData) {
-      setNamee(empData.EmployeeName || "");
-      setEmpcodee(empData.EmpCode || "");
-      setHqe(empData.HQ || "");
-      setEmaile(empData.Email || "");
-      setPassworde(empData.Password || "");
-        const role = empData.Role || "";
-    setRolee(role);
-    setDesignation(roleToDesignationMap[role] || "");
+useEffect(() => {
+  if (!empData) return;
+
+  setNamee(empData.EmployeeName || "");
+  setEmpcodee(empData.EmpCode || "");
+  setHqe(empData.HQ || "");
+  setEmaile(empData.Email || "");
+  setPassworde(empData.Password || "");
+
+  const role = empData.Role || "";
+  setRolee(role);
+  setDesignation(roleToDesignationMap[role] || "");
+
+  if (role === "ZM") {
+    setShowReporting(false);
+    setReporting(0);
+  } else {
+    setShowReporting(true);
+  }
+}, [empData]);
+useEffect(() => {
+  if (!empData || !rolee) return;
+
+  const loadReporting = async () => {
+    if (rolee === "RM") {
+      await fetchReportingEmployees("ZM");
+      setReporting(String(empData.Reporting || ""));
+    } 
+    else if (rolee === "HCE") {
+      await fetchReportingEmployees("RM");
+      setReporting(String(empData.Reporting || ""));
     }
-  }, [empData]);
+  };
+
+  loadReporting();
+}, [rolee, empData]);
 
   const handelCloseModel = () => {
      setNamee("");
@@ -48,22 +84,7 @@ const roleToDesignationMap = {
     setEditUserModel(false);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!namee || !empcodee || !emaile || !designation || !passworde) {
-      toast.error("Missing required fields");
-      return;
-    }
-
-    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emaile);
-    if (!isValidEmail) {
-      toast.error("Invalid Email");
-      return;
-    }
-
-    setShowConfirmation(true);
-  };
+  const handleSubmit = (e) => { e.preventDefault(); if (!namee || !empcodee || !emaile || !designation || !passworde) { toast.error("Missing required fields"); return; } const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emaile); if (!isValidEmail) { toast.error("Invalid Email"); return; } setShowConfirmation(true); };
 
   const handleConfirm = async () => {
     setShowConfirmation(false);
@@ -79,7 +100,8 @@ const roleToDesignationMap = {
           email: emaile,
           password: passworde,
           designation,
-          role: rolee
+          role: rolee,
+          reporting 
         }
       );
 
@@ -156,19 +178,33 @@ const roleToDesignationMap = {
                 {/* DESIGNATION DROPDOWN */}
                 <div className="form-group col-md-6">
                   <label>Designation</label>
-                  <select
-                    className="form-control"
-                    value={designation}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setDesignation(value);
+                 <select
+  className="form-control"
+  value={designation}
+  onChange={(e) => {
+    const value = e.target.value;
+    setDesignation(value);
 
-                      if (value === "Zonal Manager - CNS") setRolee("ZM");
-                      else if (value === "Regional Manager - CNS") setRolee("RM");
-                      else if (value === "Health Care Manager - CNS") setRolee("HCE");
-                      else setRolee("");
-                    }}
-                  >
+   if (value === "Zonal Manager - CNS") {
+  setRolee("ZM");
+  setShowReporting(false);
+  setReporting(0);
+  setReportingList([]);
+}
+else if (value === "Regional Manager - CNS") {
+  setRolee("RM");
+  setShowReporting(true);
+  setReporting("");
+  fetchReportingEmployees("ZM");
+}
+else if (value === "Health Care Manager - CNS") {
+  setRolee("HCE");
+  setShowReporting(true);
+  setReporting("");
+  fetchReportingEmployees("RM");
+}
+  }}
+>
                     <option value="">Select Designation</option>
                     <option value="Zonal Manager - CNS">Zonal Manager - CNS</option>
                     <option value="Regional Manager - CNS">Regional Manager - CNS</option>
@@ -185,7 +221,24 @@ const roleToDesignationMap = {
                     className="form-control"
                   />
                 </div>
+{showReporting && (
+  <div className="form-group col-md-6">
+    <label>Reporting Manager</label>
+    <select
+      className="form-control"
+      value={reporting}
+      onChange={(e) => setReporting(e.target.value)}
+    >
+      <option value="">Select Reporting</option>
 
+      {reportingList.map((emp) => (
+      <option key={emp.empid} value={String(emp.EmpCode)}>
+          {emp.EmployeeName} ({emp.EmpCode})
+        </option>
+      ))}
+    </select>
+  </div>
+)}
               </div>
 
               <div className="text-center">

@@ -160,7 +160,7 @@ setResultRows(combined);
       <i className="fas fa-file-excel excel-icon"></i>
       <div>
         <h6 className="mb-1">Step 1: Download Excel Template</h6>
-        <small>Use this template to avoid upload errors</small>
+        <small>Please make sure the file is uploaded using the given sample format</small>
       </div>
     </div>
 

@@ -574,7 +574,9 @@ const [page, setPage] = useState(1);
 
           {/* START DEFAULT DATATABLE */}
               <div className="panel panel-default">
-                
+                 <div className="ml-2">
+                    <small className="msgnote mt-2">*Scroll left for other column of table</small>
+                </div>
                 <div className="panel-body" style={{overflowX:"auto"}}>
                   <table className="table datatable">
                     <thead>

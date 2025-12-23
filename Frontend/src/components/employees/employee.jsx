@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // import "../../../style/css/sb-admin-2.min.css";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 
 //import { toast } from "react-toastify";
 import "./employee.css";
@@ -14,6 +14,7 @@ import BulkUploadModal from "./bulkUploadModal";
 import { BASEURL } from "../../constant/constant";
 import Navigation from "../../Admin/Layout/Navigation";
 function Employee() {
+   const navigate = useNavigate();
   const [name, SetName] = useState("");
   const [empcode, SetEmpcode] = useState("");
   const [state, SetState] = useState("");
@@ -27,7 +28,8 @@ function Employee() {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showConfirmationDel, setShowConfirmationDel] = useState(false);
   const [delId, setDelId] = useState(null);
-
+  const [reportingList, setReportingList] = useState([]);
+  const [showReporting, setShowReporting] = useState(true); 
   const [addUserModel, setAddUserModel] = useState(false);
   const [uploadUsersModal, setUploadModal] = useState(false);
   const [editUserModel, setEditUserModel] = useState(false);
@@ -39,13 +41,29 @@ function Employee() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading,setLoading] = useState(false);
 const [designation, setDesignation] = useState("");
-  const handelAddUser = () => {
+  const handelLogOut = ()=>{
+    
+   
+    sessionStorage.removeItem("IsAdminLoggedIn");
+    navigate("/adminLogin");
+  
+ }
+const handelAddUser = () => {
     setAddUserModel(true);
   };
   const handleUploadUsers = () => {
     setUploadModal(true);
   };
-
+const fetchReportingEmployees = async (role) => {
+  try {
+    const res = await axios.get(
+      `${BASEURL}/getReportingEmployees?role=${role}`
+    );
+    setReportingList(res.data.users || []);
+  } catch (error) {
+    console.log(error);
+  }
+};
   const handelEdit = async (id) => {
     console.log(id);
     await GetEmpWithId(id);
@@ -96,32 +114,51 @@ const [designation, setDesignation] = useState("");
     setEditUserModel(false);
     setUploadModal(false);
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (
-      !name ||
-      !empcode ||
-      !email ||
-      // !state ||
-      // !hq ||
-      // !city ||
-      // !pincode ||
-      // !reporting ||
-      !password ||
-      !role
-    ) {
-      toast.error("Missing required fields");
-      return;
-    }
-    const isValidEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
+  if (!name.trim()) {
+    toast.error("Employee name is required");
+    return;
+  }
 
-    if(!isValidEmail){
-      toast.error("Invalid Email");
-      return;
-    }
-    setShowConfirmation(true);
-  };
+  if (!empcode.trim()) {
+    toast.error("Employee code is required");
+    return;
+  }
+
+  if (!email.trim()) {
+    toast.error("Email is required");
+    return;
+  }
+
+  const isValidEmail =
+    /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
+
+  if (!isValidEmail) {
+    toast.error("Invalid email format");
+    return;
+  }
+
+  if (!role) {
+    toast.error("Please select designation");
+    return;
+  }
+
+  // 🔥 Reporting validation only when visible
+  if (showReporting && (!reporting || reporting === "0")) {
+    toast.error("Please select reporting manager");
+    return;
+  }
+
+  if (!password.trim()) {
+    toast.error("Password is required");
+    return;
+  }
+
+  // ✅ All validations passed
+  setShowConfirmation(true);
+};
   const handleConfirm = async () => {
     setShowConfirmation(false);
     setAddUserModel(false);
@@ -132,7 +169,9 @@ const [designation, setDesignation] = useState("");
   hq,                   // HQ
   email,                // Email
   password,
-  role                  // Role
+  role,                  // Role
+ reporting,
+ designation
 });
       toast.success("Employee created successfully");
       await GetEmpData();
@@ -251,9 +290,14 @@ const handleSearchChange = (event) => {
 
                 <div className="dropdown-divider"></div>
 
-                <div className="dropdown-item">
-                  <i className="fas fa-sign-out-alt mr-3"></i>Logout
-                </div>
+               <div
+  className="dropdown-item"
+  style={{ cursor: "pointer" }}
+  onClick={handelLogOut}
+>
+  <i className="fas fa-sign-out-alt mr-3"></i>
+  Logout
+</div>
               </a>
             </div>
           </li>
@@ -322,6 +366,7 @@ const handleSearchChange = (event) => {
       {/* Content Row */}
       <div className="card shadow mb-4">
         <div className="card-body">
+          <small className="msgnote mt-2">*Scroll left for other column of table</small>
           <div className="table-responsive">
             <table
               className="table table-bordered"
@@ -478,25 +523,43 @@ const handleSearchChange = (event) => {
                   <div className="form-group col-md-6">
   <label>Designation</label>
   <select
-    className="form-control"
-    value={designation}
-    onChange={(e) => {
-      const value = e.target.value;
+  className="form-control"
+  value={designation}
+  onChange={(e) => {
+    const value = e.target.value;
+    setDesignation(value);
 
-      setDesignation(value);
-
-      // map designation → role
-      if (value === "Zonal Manager - CNS") SetRole("ZM");
-      else if (value === "Regional Manager - CNS") SetRole("RM");
-      else if (value === "Health Care Manager - CNS") SetRole("HCE");
-      else SetRole("");
-    }}
-  >
-    <option value="">Select Designation</option>
-    <option value="Zonal Manager - CNS">Zonal Manager - CNS</option>
-    <option value="Regional Manager - CNS">Regional Manager - CNS</option>
-    <option value="Health Care Manager - CNS">Health Care Manager - CNS</option>
-  </select>
+    if (value === "Health Care Manager - CNS") {
+      SetRole("HCE");
+      setShowReporting(true);
+      SetReporting("");               // reset
+      fetchReportingEmployees("RM");
+    } 
+    else if (value === "Regional Manager - CNS") {
+      SetRole("RM");
+      setShowReporting(true);
+      SetReporting("");               // reset
+      fetchReportingEmployees("ZM");
+    } 
+    else if (value === "Zonal Manager - CNS") {
+      SetRole("ZM");
+      setShowReporting(false);        // 🔥 hide dropdown
+      SetReporting(0);                // 🔥 set reporting = 0
+      setReportingList([]);           // clear list
+    } 
+    else {
+      SetRole("");
+      setShowReporting(false);
+      SetReporting("");
+      setReportingList([]);
+    }
+  }}
+>
+  <option value="">Select Designation</option>
+  <option value="Zonal Manager - CNS">Zonal Manager - CNS</option>
+  <option value="Regional Manager - CNS">Regional Manager - CNS</option>
+  <option value="Health Care Manager - CNS">Health Care Manager - CNS</option>
+</select>
 </div>
                     <div className="form-group col-md-6">
                       <label htmlFor="password">Password</label>
@@ -511,6 +574,24 @@ const handleSearchChange = (event) => {
                         placeholder="Password"
                       />
                     </div>
+                  {showReporting && (
+  <div className="form-group col-md-6">
+    <label>Reporting Manager</label>
+    <select
+      className="form-control"
+      value={reporting}
+      onChange={(e) => SetReporting(e.target.value)}
+    >
+      <option value="">Select Reporting</option>
+
+      {reportingList.map((emp) => (
+        <option key={emp.empid} value={emp.EmpCode}>
+          {emp.EmployeeName} ({emp.EmpCode})
+        </option>
+      ))}
+    </select>
+  </div>
+)}
                   </div>
                   <div className="text-center">
                     <button type="submit"  style={{ border: "none", backgroundColor:"#2f3f6f",color:"white"}} className="btn  mx-auto">

@@ -193,6 +193,9 @@ const DocReports = () => {
 
                 
                 </div>
+                 <div className="ml-2">
+                    <small className="msgnote mt-2">*Scroll left for other column of table</small>
+                </div>
                 <div className="panel-body">
                   <table className="table datatable">
                     <thead>
