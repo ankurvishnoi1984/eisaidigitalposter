@@ -248,7 +248,7 @@
     height: 95px;
     border-radius: 50%;
 }
-.namediv8 {
+.namediv10 {
     position: absolute;
   margin-top: 160px;
     margin-left: 100px;
@@ -262,7 +262,7 @@
     font-family: "telegraf";
     /* border: 1px solid blue; */
 }
-.therapydiv8 {
+.therapydiv10 {
     position: absolute;
     margin-top: 172px;
     margin-left: 100px;
@@ -275,7 +275,7 @@
      font-family: "telegraf";
 }
 
-.hospitaldiv8 {
+.hospitaldiv10 {
     position: absolute;
     margin-top: 182px;
     margin-left: 100px;
@@ -288,7 +288,66 @@
      font-family: "telegraf";
 }
 
+ .poster-image10 {
+    width: 220px; 
+       height: 387px;
+    position: relative;
+    z-index: 10;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
+ .profile-image10 {
+     position: absolute;
+    margin-top: 290.5px;
+    margin-left: -10px;
 
+}
+   .profile-poster10 {
+    vertical-align: middle;
+       width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+.namediv10 {
+    position: absolute;
+    margin-top: 303px;
+    margin-left: 53px;
+    font-size: 8px;
+    width: 135px;
+    text-align: start;
+    color: #0b0c4d;
+    /* font-style: italic; */
+    line-height: 1.2;
+    font-weight: 700;
+    font-family: "telegraf";
+    /* border: 1px solid blue; */
+}
+.therapydiv10 {
+    position: absolute;
+    margin-top: 172px;
+      margin-left: 53px;
+    font-size: 7px;
+    width: 140px;
+    text-align: start;
+    color: #545355;
+    /* font-style: italic; */
+    font-weight: 100;
+     font-family: "telegraf";
+}
+
+.hospitaldiv10 {
+    position: absolute;
+    margin-top: 182px;
+   margin-left: 53px;
+    font-size: 7px;
+    width: 125px;
+    text-align: start;
+    color: #545355;
+    /* font-style: italic; */
+    font-weight: 100;
+     font-family: "telegraf";
+}
    .poster-image6 {
     width: 250px; 
     height: 350px; 

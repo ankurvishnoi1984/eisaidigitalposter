@@ -27,7 +27,7 @@ const PosterContent = () => {
   }, []);
 
  
-const formatTextWithTitleSpacing = (text="", maxCharsPerLine = 16) => {
+const formatTextWithTitleSpacing = (text="", maxCharsPerLine = 25) => {
   const cleanText = text.trim();
   if (cleanText.length <= maxCharsPerLine) {
     return cleanText;
@@ -677,8 +677,183 @@ const formatTextWithTitleSpacing = (text="", maxCharsPerLine = 16) => {
       };
     };
   };
+  const handleSave5 = async () => {
+    const toastId = toast.loading("Processing your download...");
+    const poster = document.getElementById("pdiv10");
+    const posterClone = poster.cloneNode(true);
+    const profileImageClone = posterClone.querySelector(".profile-poster10");
+    const profilenameClone = posterClone.querySelector(".namediv10");
+    const profileTherapyClone = posterClone.querySelector(".therapydiv10");
+    const profileHospitalClone = posterClone.querySelector(".hospitaldiv10");
+    // console.log(profileTherapyClone.innerHTML)
   
-  const wrapHospitalName = (text, maxLen = 24) => {
+    // Modify the clone
+    profileImageClone.style.width = "190px"; 
+    profileImageClone.style.height = "190px"; 
+    profileImageClone.style.position = "absolute";
+    profileImageClone.style.top = "76.5%";
+    profileImageClone.style.left = "5.5%";
+    //   profileImageClone.style.top = "99.7%";
+    // profileImageClone.style.left = "4.5%";
+    profileImageClone.style.borderRadius = "50%";
+  
+    // const maxLength = 16;
+    // const nameText = profilenameClone.textContent;
+    // if (nameText.length > maxLength) {
+    //   profilenameClone.style.top = "35%";
+    //   profilenameClone.style.lineHeight  = "1.3";
+    // } else {
+    //   profilenameClone.style.top = "35%";
+    // }
+  
+    profilenameClone.style.position = "absolute";
+    profilenameClone.style.top = "80%";
+    profilenameClone.style.left = "35%";
+    profilenameClone.style.fontSize = "25px";
+    profilenameClone.style.fontFamily = "telegraf";
+    profilenameClone.style.textAlign = 'start';
+    // profilenameClone.style.width = "1200px";
+    profilenameClone.style.color = '#0b0c4d';
+    profilenameClone.style.fontWeight = "900";
+//     profilenameClone.style.textShadow = `
+//   2px 0 #1900BB,
+//   -2px 0 #1900BB,
+//   0 2px #1900BB,
+//   0 -2px #1900BB,
+//   1.5px 1.5px #1900BB,
+//   -1.5px 1.5px #1900BB,
+//   1.5px -1.5px #1900BB,
+//   -1.5px -1.5px #1900BB
+// `;
+
+    profilenameClone.style.wordBreak = "break-word";
+    // profilenameClone.style.border = '1px solid blue'
+  
+    profileTherapyClone.style.position = "absolute";
+   if (singalDocData && singalDocData.name && singalDocData.name.length > 28) {
+     profileTherapyClone.style.top = "61%";
+   }else if(singalDocData && singalDocData.name && singalDocData.name.length > 25){
+     profileTherapyClone.style.top = "60%";
+
+    } else {
+     profileTherapyClone.style.top = "60%";
+   }
+    profileTherapyClone.style.left = "35%";
+    profileTherapyClone.style.fontSize = "23px";
+    profileTherapyClone.style.fontFamily = "telegraf";
+    profileTherapyClone.style.textAlign = 'start';
+    // profileTherapyClone.style.width = "700px";
+    profileTherapyClone.style.color = '#545355';
+    profileTherapyClone.style.fontWeight = "600";
+//     profileTherapyClone.style.textShadow = `
+//   2px 0 #1900BB,
+//   -2px 0 #1900BB,
+//   0 2px #1900BB,
+//   0 -2px #1900BB,
+//   1.5px 1.5px #1900BB,
+//   -1.5px 1.5px #1900BB,
+//   1.5px -1.5px #1900BB,
+//   -1.5px -1.5px #1900BB
+// `;
+
+
+  
+    profileHospitalClone.style.position = "absolute";
+    if (singalDocData && singalDocData.name && singalDocData.name.length > 28) {
+      profileHospitalClone.style.top = "63%";
+    }else if(singalDocData && singalDocData.name && singalDocData.name.length > 25){
+      profileHospitalClone.style.top = "62%";
+
+    }
+    else{
+      profileHospitalClone.style.top = "62%";
+
+    }
+    profileHospitalClone.style.left = "35%";
+    profileHospitalClone.style.fontSize = "23px";
+    profileHospitalClone.style.fontFamily = "telegraf";
+    profileHospitalClone.style.textAlign = "start";
+    profileHospitalClone.style.width = "1200px";
+    profileHospitalClone.style.color = '#545355';
+    profileHospitalClone.style.fontWeight = "600";
+//     profileHospitalClone.style.textShadow = `
+//   2px 0 #1900BB,
+//   -2px 0 #1900BB,
+//   0 2px #1900BB,
+//   0 -2px #1900BB,
+//   1.5px 1.5px #1900BB,
+//   -1.5px 1.5px #1900BB,
+//   1.5px -1.5px #1900BB,
+//   -1.5px -1.5px #1900BB
+// `;
+  
+    // Load the profile image
+    const profileImageSrc = profileImageClone.src;
+    const profileImage = new Image();
+    profileImage.src = profileImageSrc;
+    profileImage.crossOrigin = "anonymous";
+  
+    profileImage.onload = async () => {
+      // Create a temporary <img> element with the background image as its source
+      const bgImg = new Image();
+      bgImg.src = `/images/sleepday.jpg`;
+  
+      // Wait for the background image to load before generating the image
+      bgImg.onload = async () => {
+        // Create a temporary canvas
+        const canvas = document.createElement("canvas");
+        canvas.width = bgImg.width;
+        canvas.height = bgImg.height;
+        const ctx = canvas.getContext("2d");
+  
+        // Draw the background image onto the canvas
+        ctx.drawImage(bgImg, 0, 0);
+  
+        // Draw the profile image onto the canvas
+       // ctx.drawImage(profileImage, parseFloat(profileImageClone.style.left), parseFloat(profileImageClone.style.top), parseFloat(profileImageClone.style.width), parseFloat(profileImageClone.style.height));
+        const x = parseFloat(40);
+        const y = parseFloat(1044);
+        const width = parseFloat(profileImageClone.style.width);
+        const height = parseFloat(profileImageClone.style.height);
+        const radius = width / 2;
+  
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(x + radius, y + radius, radius, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.clip();
+  
+        ctx.drawImage(profileImage, x, y, width, height);
+        ctx.restore();
+        // Draw the poster content on top of the background image
+        const dataUrl = await domtoimage.toPng(posterClone, {
+          width: 768,
+          height: 1365,
+        });
+  
+        // Get the Image data from the poster content
+        const img = new Image();
+        img.src = dataUrl;
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          // Draw the poster content on top of the background image
+          ctx.drawImage(img, 0, 0);
+  
+          const randomName = `World_Sleep_Day_Poster_${Math.random().toString(36).substring(7)}.png`;
+          // Convert the canvas to a data URL and create a download link
+          const imageWithBackground = canvas.toDataURL("image/png");
+          const link = document.createElement("a");
+          link.href = imageWithBackground;
+          link.download = randomName;
+          link.click();
+          toast.success("Download complete!", { id: toastId });
+          canvas.remove();
+        };
+      };
+    };
+  };
+  
+  const wrapHospitalName = (text, maxLen = 40) => {
   if (!text) return "";
 
   if (text.length <= maxLen) return text;
@@ -875,6 +1050,64 @@ console.log("singalDocData",singalDocData);
              <div
                onClick={() =>
                  handleSave4()
+               }
+               className="btn btn-sm btn-danger"
+             >
+               <i className="fas fa-download"></i> Image
+             </div>
+           </div>
+         </div>
+         </div> :""
+             }
+              {subCatId == 5 ? 
+         <div className="card bg-light ml-3">
+         <div
+           className="card-body pt-0 poster-image10"
+           id="pdiv10"
+           style={{
+             backgroundImage: `url(/images/sleepday.jpg)`,
+             fontFamily: 'Montserrat, sans-serif'
+            
+           }}
+         >
+                  <div className="row">
+                    <div className=" text-center">
+                      <div className="profile-image10">
+                        <img
+                          src={`${BASEURL}/uploads/${profileImageUrl}`}
+                          alt="doctor image"
+                          className="profile-poster10"
+                        // crossOrigin="anonymous"
+                        />
+                      </div>
+                      <div className={`namediv10 montserrat-fnt ${singalDocData && singalDocData.name && singalDocData.name.length > 25 ? 'long-text' : ''}`}>
+                        {formatTextWithTitleSpacing(singalDocData.name)}
+                      </div>
+                      <div className="therapydiv10 montserrat-fnt"
+                        style={{
+                          marginTop: singalDocData?.name?.length > 25 ? "320px" : "314px", // ✅ INLINE STYLE HERE
+                        }}
+                      >
+                        {singalDocData.therapy}
+                      </div>
+                      <div
+                        className="hospitaldiv10 montserrat-fnt"
+                        style={{
+                          marginTop:
+                            singalDocData?.name?.length > 16 ? "328px" : "324px",
+                          whiteSpace: "pre-line", // IMPORTANT
+                        }}
+                      >
+                        {wrapHospitalName(singalDocData.hospital)}
+                      </div>
+                    </div>
+                  </div>
+         </div>
+         <div className="card-footer">
+           <div className="text-center">
+             <div
+               onClick={() =>
+                 handleSave5()
                }
                className="btn btn-sm btn-danger"
              >
